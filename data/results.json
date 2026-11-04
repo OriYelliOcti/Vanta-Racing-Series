@@ -1,0 +1,69 @@
+{
+  "_note": "Every round with demo:true is placeholder data so the tables are not empty. Delete those rounds before the first real race weekend.",
+  "rounds": [
+    {
+      "round": 1,
+      "name": "Bahrain Grand Prix",
+      "date": "2026-03-08",
+      "demo": true,
+      "divisions": {
+        "F1": [
+          { "pos": 1, "driver": "A. Rookie", "team": "mclaren" },
+          { "pos": 2, "driver": "B. Novak", "team": "ferrari" },
+          { "pos": 3, "driver": "C. Rin", "team": "red_bull_racing" },
+          { "pos": 4, "driver": "D. Voss", "team": "mercedes", "fastestLap": true },
+          { "pos": 5, "driver": "E. Haldane", "team": "aston_martin" },
+          { "pos": 6, "driver": "F. Meridian", "team": "alpine" },
+          { "pos": 7, "driver": "G. Petrov", "team": "williams" },
+          { "pos": 8, "driver": "H. Lindqvist", "team": "haas" },
+          { "pos": 9, "driver": "I. Sorensen", "team": "racing_bulls" },
+          { "pos": 10, "driver": "J. Amano", "team": "audi" }
+        ],
+        "F2": [
+          { "pos": 1, "driver": "K. Brent", "team": "prema" },
+          { "pos": 2, "driver": "L. Faro", "team": "art_grand_prix" },
+          { "pos": 3, "driver": "M. Oduya", "team": "campos" },
+          { "pos": 4, "driver": "N. Weber", "team": "dams", "fastestLap": true },
+          { "pos": 5, "driver": "O. Tanaka", "team": "hitech" },
+          { "pos": 6, "driver": "P. Kovacs", "team": "mp_motorsport" },
+          { "pos": 7, "driver": "Q. Serra", "team": "trident" },
+          { "pos": 8, "driver": "R. Blom", "team": "rodin" },
+          { "pos": 9, "driver": "S. Meier", "team": "van_amersfoort" },
+          { "pos": 10, "driver": "T. Rask", "team": "aix" }
+        ]
+      }
+    },
+    {
+      "round": 2,
+      "name": "Saudi Arabian Grand Prix",
+      "date": "2026-03-15",
+      "demo": true,
+      "divisions": {
+        "F1": [
+          { "pos": 1, "driver": "C. Rin", "team": "red_bull_racing" },
+          { "pos": 2, "driver": "A. Rookie", "team": "mclaren" },
+          { "pos": 3, "driver": "D. Voss", "team": "mercedes" },
+          { "pos": 4, "driver": "B. Novak", "team": "ferrari", "note": "5s penalty" },
+          { "pos": 5, "driver": "G. Petrov", "team": "williams" },
+          { "pos": 6, "driver": "E. Haldane", "team": "aston_martin" },
+          { "pos": 7, "driver": "J. Amano", "team": "audi" },
+          { "pos": 8, "driver": "F. Meridian", "team": "alpine" },
+          { "pos": 9, "driver": "I. Sorensen", "team": "racing_bulls", "fastestLap": true },
+          { "pos": 10, "driver": "H. Lindqvist", "team": "haas" }
+        ],
+        "F2": [
+          { "pos": 1, "driver": "M. Oduya", "team": "campos" },
+          { "pos": 2, "driver": "K. Brent", "team": "prema" },
+          { "pos": 3, "driver": "N. Weber", "team": "dams" },
+          { "pos": 4, "driver": "P. Kovacs", "team": "mp_motorsport", "fastestLap": true },
+          { "pos": 5, "driver": "L. Faro", "team": "art_grand_prix" },
+          { "pos": 6, "driver": "Q. Serra", "team": "trident" },
+          { "pos": 7, "driver": "O. Tanaka", "team": "hitech" },
+          { "pos": 8, "driver": "T. Rask", "team": "aix" },
+          { "pos": 9, "driver": "S. Meier", "team": "van_amersfoort" },
+          { "pos": 10, "driver": "R. Blom", "team": "rodin" }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "_note": "Placeholder calendar. Replace circuits, dates and pit windows with the real VRS season before publishing.",
+  "rounds": [
+    { "round": 1, "name": "Bahrain Grand Prix", "circuit": "Bahrain International Circuit", "country": "Bahrain", "laps": 57, "pitWindow": "Lap 12–18 or 34–40", "date": "2026-03-08" },
+    { "round": 2, "name": "Saudi Arabian Grand Prix", "circuit": "Jeddah Corniche Circuit", "country": "Saudi Arabia", "laps": 50, "pitWindow": "Lap 10–15 or 30–35", "date": "2026-03-15" },
+    { "round": 3, "name": "Australian Grand Prix", "circuit": "Albert Park Circuit", "country": "Australia", "laps": 58, "pitWindow": "Lap 14–20 or 36–42", "date": "2026-03-29" },
+    { "round": 4, "name": "Japanese Grand Prix", "circuit": "Suzuka International Racing Course", "country": "Japan", "laps": 53, "pitWindow": "Lap 12–17 or 30–36", "date": "2026-04-12" },
+    { "round": 5, "name": "Emilia-Romagna Grand Prix", "circuit": "Autodromo Enzo e Dino Ferrari", "country": "Italy", "laps": 63, "pitWindow": "Lap 15–21 or 38–44", "date": "2026-05-17" },
+    { "round": 6, "name": "Monaco Grand Prix", "circuit": "Circuit de Monaco", "country": "Monaco", "laps": 78, "pitWindow": "Lap 18–25 or 45–52", "date": "2026-05-24" },
+    { "round": 7, "name": "British Grand Prix", "circuit": "Silverstone Circuit", "country": "United Kingdom", "laps": 52, "pitWindow": "Lap 12–18 or 32–38", "date": "2026-07-05" },
+    { "round": 8, "name": "Italian Grand Prix", "circuit": "Autodromo Nazionale Monza", "country": "Italy", "laps": 53, "pitWindow": "Lap 14–20 or 34–40", "date": "2026-09-06" }
+  ]
+}

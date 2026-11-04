@@ -1,0 +1,931 @@
+{
+  "generatedAt": "2026-11-04T10:42:21+00:00",
+  "source": "discord-roles",
+  "guildId": "1567277556661616770",
+  "teams": [
+    {
+      "key": "mclaren",
+      "name": "McLaren",
+      "division": "F1",
+      "roleId": "1567289285810589820",
+      "roleName": "🏎️ McLaren",
+      "slots": {
+        "boss": {
+          "roleId": "1567289241824657429",
+          "label": "💼 Team Boss",
+          "members": []
+        },
+        "principal": {
+          "roleId": "1567289247952801842",
+          "label": "📋 Team Principal",
+          "members": []
+        },
+        "fia": {
+          "roleId": "1567485765817208963",
+          "label": "🏁 FIA",
+          "members": []
+        },
+        "driver": {
+          "roleId": "1567289254374285445",
+          "label": "⏱️ Driver",
+          "members": []
+        },
+        "reserve": {
+          "roleId": "1567289260611215421",
+          "label": "🎯 Reserve",
+          "members": []
+        },
+        "crew": {
+          "roleId": "1567289266525176011",
+          "label": "🧯 Pit Crew",
+          "members": []
+        },
+        "engineer": {
+          "roleId": "1567481658729308191",
+          "label": "🔧 Engineer",
+          "members": []
+        }
+      }
+    },
+    {
+      "key": "ferrari",
+      "name": "Ferrari",
+      "division": "F1",
+      "roleId": "1567289292588454020",
+      "roleName": "🏎️ Ferrari",
+      "slots": {
+        "boss": {
+          "roleId": "1567289241824657429",
+          "label": "💼 Team Boss",
+          "members": []
+        },
+        "principal": {
+          "roleId": "1567289247952801842",
+          "label": "📋 Team Principal",
+          "members": []
+        },
+        "fia": {
+          "roleId": "1567485765817208963",
+          "label": "🏁 FIA",
+          "members": []
+        },
+        "driver": {
+          "roleId": "1567289254374285445",
+          "label": "⏱️ Driver",
+          "members": []
+        },
+        "reserve": {
+          "roleId": "1567289260611215421",
+          "label": "🎯 Reserve",
+          "members": []
+        },
+        "crew": {
+          "roleId": "1567289266525176011",
+          "label": "🧯 Pit Crew",
+          "members": []
+        },
+        "engineer": {
+          "roleId": "1567481658729308191",
+          "label": "🔧 Engineer",
+          "members": []
+        }
+      }
+    },
+    {
+      "key": "red_bull_racing",
+      "name": "Red Bull Racing",
+      "division": "F1",
+      "roleId": "1567289300301774948",
+      "roleName": "🏎️ Red Bull Racing",
+      "slots": {
+        "boss": {
+          "roleId": "1567289241824657429",
+          "label": "💼 Team Boss",
+          "members": []
+        },
+        "principal": {
+          "roleId": "1567289247952801842",
+          "label": "📋 Team Principal",
+          "members": []
+        },
+        "fia": {
+          "roleId": "1567485765817208963",
+          "label": "🏁 FIA",
+          "members": []
+        },
+        "driver": {
+          "roleId": "1567289254374285445",
+          "label": "⏱️ Driver",
+          "members": []
+        },
+        "reserve": {
+          "roleId": "1567289260611215421",
+          "label": "🎯 Reserve",
+          "members": []
+        },
+        "crew": {
+          "roleId": "1567289266525176011",
+          "label": "🧯 Pit Crew",
+          "members": []
+        },
+        "engineer": {
+          "roleId": "1567481658729308191",
+          "label": "🔧 Engineer",
+          "members": []
+        }
+      }
+    },
+    {
+      "key": "mercedes",
+      "name": "Mercedes",
+      "division": "F1",
+      "roleId": "1567289306790371469",
+      "roleName": "🏎️ Mercedes",
+      "slots": {
+        "boss": {
+          "roleId": "1567289241824657429",
+          "label": "💼 Team Boss",
+          "members": []
+        },
+        "principal": {
+          "roleId": "1567289247952801842",
+          "label": "📋 Team Principal",
+          "members": []
+        },
+        "fia": {
+          "roleId": "1567485765817208963",
+          "label": "🏁 FIA",
+          "members": []
+        },
+        "driver": {
+          "roleId": "1567289254374285445",
+          "label": "⏱️ Driver",
+          "members": []
+        },
+        "reserve": {
+          "roleId": "1567289260611215421",
+          "label": "🎯 Reserve",
+          "members": []
+        },
+        "crew": {
+          "roleId": "1567289266525176011",
+          "label": "🧯 Pit Crew",
+          "members": []
+        },
+        "engineer": {
+          "roleId": "1567481658729308191",
+          "label": "🔧 Engineer",
+          "members": []
+        }
+      }
+    },
+    {
+      "key": "aston_martin",
+      "name": "Aston Martin",
+      "division": "F1",
+      "roleId": "1567289313002266724",
+      "roleName": "🏎️ Aston Martin",
+      "slots": {
+        "boss": {
+          "roleId": "1567289241824657429",
+          "label": "💼 Team Boss",
+          "members": []
+        },
+        "principal": {
+          "roleId": "1567289247952801842",
+          "label": "📋 Team Principal",
+          "members": []
+        },
+        "fia": {
+          "roleId": "1567485765817208963",
+          "label": "🏁 FIA",
+          "members": []
+        },
+        "driver": {
+          "roleId": "1567289254374285445",
+          "label": "⏱️ Driver",
+          "members": []
+        },
+        "reserve": {
+          "roleId": "1567289260611215421",
+          "label": "🎯 Reserve",
+          "members": []
+        },
+        "crew": {
+          "roleId": "1567289266525176011",
+          "label": "🧯 Pit Crew",
+          "members": []
+        },
+        "engineer": {
+          "roleId": "1567481658729308191",
+          "label": "🔧 Engineer",
+          "members": []
+        }
+      }
+    },
+    {
+      "key": "alpine",
+      "name": "Alpine",
+      "division": "F1",
+      "roleId": "1567289318664314981",
+      "roleName": "🏎️ Alpine",
+      "slots": {
+        "boss": {
+          "roleId": "1567289241824657429",
+          "label": "💼 Team Boss",
+          "members": []
+        },
+        "principal": {
+          "roleId": "1567289247952801842",
+          "label": "📋 Team Principal",
+          "members": []
+        },
+        "fia": {
+          "roleId": "1567485765817208963",
+          "label": "🏁 FIA",
+          "members": []
+        },
+        "driver": {
+          "roleId": "1567289254374285445",
+          "label": "⏱️ Driver",
+          "members": []
+        },
+        "reserve": {
+          "roleId": "1567289260611215421",
+          "label": "🎯 Reserve",
+          "members": []
+        },
+        "crew": {
+          "roleId": "1567289266525176011",
+          "label": "🧯 Pit Crew",
+          "members": []
+        },
+        "engineer": {
+          "roleId": "1567481658729308191",
+          "label": "🔧 Engineer",
+          "members": []
+        }
+      }
+    },
+    {
+      "key": "williams",
+      "name": "Williams",
+      "division": "F1",
+      "roleId": "1567289324951834775",
+      "roleName": "🏎️ Williams",
+      "slots": {
+        "boss": {
+          "roleId": "1567289241824657429",
+          "label": "💼 Team Boss",
+          "members": []
+        },
+        "principal": {
+          "roleId": "1567289247952801842",
+          "label": "📋 Team Principal",
+          "members": []
+        },
+        "fia": {
+          "roleId": "1567485765817208963",
+          "label": "🏁 FIA",
+          "members": []
+        },
+        "driver": {
+          "roleId": "1567289254374285445",
+          "label": "⏱️ Driver",
+          "members": []
+        },
+        "reserve": {
+          "roleId": "1567289260611215421",
+          "label": "🎯 Reserve",
+          "members": []
+        },
+        "crew": {
+          "roleId": "1567289266525176011",
+          "label": "🧯 Pit Crew",
+          "members": []
+        },
+        "engineer": {
+          "roleId": "1567481658729308191",
+          "label": "🔧 Engineer",
+          "members": []
+        }
+      }
+    },
+    {
+      "key": "haas",
+      "name": "Haas",
+      "division": "F1",
+      "roleId": "1567289333591842940",
+      "roleName": "🏎️ Haas",
+      "slots": {
+        "boss": {
+          "roleId": "1567289241824657429",
+          "label": "💼 Team Boss",
+          "members": []
+        },
+        "principal": {
+          "roleId": "1567289247952801842",
+          "label": "📋 Team Principal",
+          "members": []
+        },
+        "fia": {
+          "roleId": "1567485765817208963",
+          "label": "🏁 FIA",
+          "members": []
+        },
+        "driver": {
+          "roleId": "1567289254374285445",
+          "label": "⏱️ Driver",
+          "members": []
+        },
+        "reserve": {
+          "roleId": "1567289260611215421",
+          "label": "🎯 Reserve",
+          "members": []
+        },
+        "crew": {
+          "roleId": "1567289266525176011",
+          "label": "🧯 Pit Crew",
+          "members": []
+        },
+        "engineer": {
+          "roleId": "1567481658729308191",
+          "label": "🔧 Engineer",
+          "members": []
+        }
+      }
+    },
+    {
+      "key": "racing_bulls",
+      "name": "Racing Bulls",
+      "division": "F1",
+      "roleId": "1567289341410021456",
+      "roleName": "🏎️ Racing Bulls",
+      "slots": {
+        "boss": {
+          "roleId": "1567289241824657429",
+          "label": "💼 Team Boss",
+          "members": []
+        },
+        "principal": {
+          "roleId": "1567289247952801842",
+          "label": "📋 Team Principal",
+          "members": []
+        },
+        "fia": {
+          "roleId": "1567485765817208963",
+          "label": "🏁 FIA",
+          "members": []
+        },
+        "driver": {
+          "roleId": "1567289254374285445",
+          "label": "⏱️ Driver",
+          "members": []
+        },
+        "reserve": {
+          "roleId": "1567289260611215421",
+          "label": "🎯 Reserve",
+          "members": []
+        },
+        "crew": {
+          "roleId": "1567289266525176011",
+          "label": "🧯 Pit Crew",
+          "members": []
+        },
+        "engineer": {
+          "roleId": "1567481658729308191",
+          "label": "🔧 Engineer",
+          "members": []
+        }
+      }
+    },
+    {
+      "key": "audi",
+      "name": "Audi",
+      "division": "F1",
+      "roleId": "1567289347592552599",
+      "roleName": "🏎️ Audi",
+      "slots": {
+        "boss": {
+          "roleId": "1567289241824657429",
+          "label": "💼 Team Boss",
+          "members": []
+        },
+        "principal": {
+          "roleId": "1567289247952801842",
+          "label": "📋 Team Principal",
+          "members": []
+        },
+        "fia": {
+          "roleId": "1567485765817208963",
+          "label": "🏁 FIA",
+          "members": []
+        },
+        "driver": {
+          "roleId": "1567289254374285445",
+          "label": "⏱️ Driver",
+          "members": []
+        },
+        "reserve": {
+          "roleId": "1567289260611215421",
+          "label": "🎯 Reserve",
+          "members": []
+        },
+        "crew": {
+          "roleId": "1567289266525176011",
+          "label": "🧯 Pit Crew",
+          "members": []
+        },
+        "engineer": {
+          "roleId": "1567481658729308191",
+          "label": "🔧 Engineer",
+          "members": []
+        }
+      }
+    },
+    {
+      "key": "cadillac",
+      "name": "Cadillac",
+      "division": "F1",
+      "roleId": "1567289361979023371",
+      "roleName": "🏎️ Cadillac",
+      "slots": {
+        "boss": {
+          "roleId": "1567289241824657429",
+          "label": "💼 Team Boss",
+          "members": []
+        },
+        "principal": {
+          "roleId": "1567289247952801842",
+          "label": "📋 Team Principal",
+          "members": []
+        },
+        "fia": {
+          "roleId": "1567485765817208963",
+          "label": "🏁 FIA",
+          "members": []
+        },
+        "driver": {
+          "roleId": "1567289254374285445",
+          "label": "⏱️ Driver",
+          "members": []
+        },
+        "reserve": {
+          "roleId": "1567289260611215421",
+          "label": "🎯 Reserve",
+          "members": []
+        },
+        "crew": {
+          "roleId": "1567289266525176011",
+          "label": "🧯 Pit Crew",
+          "members": []
+        },
+        "engineer": {
+          "roleId": "1567481658729308191",
+          "label": "🔧 Engineer",
+          "members": []
+        }
+      }
+    },
+    {
+      "key": "prema",
+      "name": "Prema Racing",
+      "division": "F2",
+      "roleId": null,
+      "roleName": null,
+      "slots": {
+        "boss": {
+          "roleId": "1567289241824657429",
+          "label": "💼 Team Boss",
+          "members": []
+        },
+        "principal": {
+          "roleId": "1567289247952801842",
+          "label": "📋 Team Principal",
+          "members": []
+        },
+        "fia": {
+          "roleId": "1567485765817208963",
+          "label": "🏁 FIA",
+          "members": []
+        },
+        "driver": {
+          "roleId": "1567289254374285445",
+          "label": "⏱️ Driver",
+          "members": []
+        },
+        "reserve": {
+          "roleId": "1567289260611215421",
+          "label": "🎯 Reserve",
+          "members": []
+        },
+        "crew": {
+          "roleId": "1567289266525176011",
+          "label": "🧯 Pit Crew",
+          "members": []
+        },
+        "engineer": {
+          "roleId": "1567481658729308191",
+          "label": "🔧 Engineer",
+          "members": []
+        }
+      }
+    },
+    {
+      "key": "art_grand_prix",
+      "name": "ART Grand Prix",
+      "division": "F2",
+      "roleId": "1567289374368866385",
+      "roleName": "🏁 ART Grand Prix",
+      "slots": {
+        "boss": {
+          "roleId": "1567289241824657429",
+          "label": "💼 Team Boss",
+          "members": []
+        },
+        "principal": {
+          "roleId": "1567289247952801842",
+          "label": "📋 Team Principal",
+          "members": []
+        },
+        "fia": {
+          "roleId": "1567485765817208963",
+          "label": "🏁 FIA",
+          "members": []
+        },
+        "driver": {
+          "roleId": "1567289254374285445",
+          "label": "⏱️ Driver",
+          "members": []
+        },
+        "reserve": {
+          "roleId": "1567289260611215421",
+          "label": "🎯 Reserve",
+          "members": []
+        },
+        "crew": {
+          "roleId": "1567289266525176011",
+          "label": "🧯 Pit Crew",
+          "members": []
+        },
+        "engineer": {
+          "roleId": "1567481658729308191",
+          "label": "🔧 Engineer",
+          "members": []
+        }
+      }
+    },
+    {
+      "key": "campos",
+      "name": "Campos Racing",
+      "division": "F2",
+      "roleId": null,
+      "roleName": null,
+      "slots": {
+        "boss": {
+          "roleId": "1567289241824657429",
+          "label": "💼 Team Boss",
+          "members": []
+        },
+        "principal": {
+          "roleId": "1567289247952801842",
+          "label": "📋 Team Principal",
+          "members": []
+        },
+        "fia": {
+          "roleId": "1567485765817208963",
+          "label": "🏁 FIA",
+          "members": []
+        },
+        "driver": {
+          "roleId": "1567289254374285445",
+          "label": "⏱️ Driver",
+          "members": []
+        },
+        "reserve": {
+          "roleId": "1567289260611215421",
+          "label": "🎯 Reserve",
+          "members": []
+        },
+        "crew": {
+          "roleId": "1567289266525176011",
+          "label": "🧯 Pit Crew",
+          "members": []
+        },
+        "engineer": {
+          "roleId": "1567481658729308191",
+          "label": "🔧 Engineer",
+          "members": []
+        }
+      }
+    },
+    {
+      "key": "dams",
+      "name": "DAMS",
+      "division": "F2",
+      "roleId": "1567289386880606218",
+      "roleName": "🏁 DAMS",
+      "slots": {
+        "boss": {
+          "roleId": "1567289241824657429",
+          "label": "💼 Team Boss",
+          "members": []
+        },
+        "principal": {
+          "roleId": "1567289247952801842",
+          "label": "📋 Team Principal",
+          "members": []
+        },
+        "fia": {
+          "roleId": "1567485765817208963",
+          "label": "🏁 FIA",
+          "members": []
+        },
+        "driver": {
+          "roleId": "1567289254374285445",
+          "label": "⏱️ Driver",
+          "members": []
+        },
+        "reserve": {
+          "roleId": "1567289260611215421",
+          "label": "🎯 Reserve",
+          "members": []
+        },
+        "crew": {
+          "roleId": "1567289266525176011",
+          "label": "🧯 Pit Crew",
+          "members": []
+        },
+        "engineer": {
+          "roleId": "1567481658729308191",
+          "label": "🔧 Engineer",
+          "members": []
+        }
+      }
+    },
+    {
+      "key": "hitech",
+      "name": "Hitech",
+      "division": "F2",
+      "roleId": "1567289392987635752",
+      "roleName": "🏁 Hitech",
+      "slots": {
+        "boss": {
+          "roleId": "1567289241824657429",
+          "label": "💼 Team Boss",
+          "members": []
+        },
+        "principal": {
+          "roleId": "1567289247952801842",
+          "label": "📋 Team Principal",
+          "members": []
+        },
+        "fia": {
+          "roleId": "1567485765817208963",
+          "label": "🏁 FIA",
+          "members": []
+        },
+        "driver": {
+          "roleId": "1567289254374285445",
+          "label": "⏱️ Driver",
+          "members": []
+        },
+        "reserve": {
+          "roleId": "1567289260611215421",
+          "label": "🎯 Reserve",
+          "members": []
+        },
+        "crew": {
+          "roleId": "1567289266525176011",
+          "label": "🧯 Pit Crew",
+          "members": []
+        },
+        "engineer": {
+          "roleId": "1567481658729308191",
+          "label": "🔧 Engineer",
+          "members": []
+        }
+      }
+    },
+    {
+      "key": "mp_motorsport",
+      "name": "MP Motorsport",
+      "division": "F2",
+      "roleId": "1567289399157334038",
+      "roleName": "🏁 MP Motorsport",
+      "slots": {
+        "boss": {
+          "roleId": "1567289241824657429",
+          "label": "💼 Team Boss",
+          "members": []
+        },
+        "principal": {
+          "roleId": "1567289247952801842",
+          "label": "📋 Team Principal",
+          "members": []
+        },
+        "fia": {
+          "roleId": "1567485765817208963",
+          "label": "🏁 FIA",
+          "members": []
+        },
+        "driver": {
+          "roleId": "1567289254374285445",
+          "label": "⏱️ Driver",
+          "members": []
+        },
+        "reserve": {
+          "roleId": "1567289260611215421",
+          "label": "🎯 Reserve",
+          "members": []
+        },
+        "crew": {
+          "roleId": "1567289266525176011",
+          "label": "🧯 Pit Crew",
+          "members": []
+        },
+        "engineer": {
+          "roleId": "1567481658729308191",
+          "label": "🔧 Engineer",
+          "members": []
+        }
+      }
+    },
+    {
+      "key": "trident",
+      "name": "Trident",
+      "division": "F2",
+      "roleId": "1567289405868085278",
+      "roleName": "🏁 Trident",
+      "slots": {
+        "boss": {
+          "roleId": "1567289241824657429",
+          "label": "💼 Team Boss",
+          "members": []
+        },
+        "principal": {
+          "roleId": "1567289247952801842",
+          "label": "📋 Team Principal",
+          "members": []
+        },
+        "fia": {
+          "roleId": "1567485765817208963",
+          "label": "🏁 FIA",
+          "members": []
+        },
+        "driver": {
+          "roleId": "1567289254374285445",
+          "label": "⏱️ Driver",
+          "members": []
+        },
+        "reserve": {
+          "roleId": "1567289260611215421",
+          "label": "🎯 Reserve",
+          "members": []
+        },
+        "crew": {
+          "roleId": "1567289266525176011",
+          "label": "🧯 Pit Crew",
+          "members": []
+        },
+        "engineer": {
+          "roleId": "1567481658729308191",
+          "label": "🔧 Engineer",
+          "members": []
+        }
+      }
+    },
+    {
+      "key": "rodin",
+      "name": "Rodin Motorsport",
+      "division": "F2",
+      "roleId": null,
+      "roleName": null,
+      "slots": {
+        "boss": {
+          "roleId": "1567289241824657429",
+          "label": "💼 Team Boss",
+          "members": []
+        },
+        "principal": {
+          "roleId": "1567289247952801842",
+          "label": "📋 Team Principal",
+          "members": []
+        },
+        "fia": {
+          "roleId": "1567485765817208963",
+          "label": "🏁 FIA",
+          "members": []
+        },
+        "driver": {
+          "roleId": "1567289254374285445",
+          "label": "⏱️ Driver",
+          "members": []
+        },
+        "reserve": {
+          "roleId": "1567289260611215421",
+          "label": "🎯 Reserve",
+          "members": []
+        },
+        "crew": {
+          "roleId": "1567289266525176011",
+          "label": "🧯 Pit Crew",
+          "members": []
+        },
+        "engineer": {
+          "roleId": "1567481658729308191",
+          "label": "🔧 Engineer",
+          "members": []
+        }
+      }
+    },
+    {
+      "key": "van_amersfoort",
+      "name": "Van Amersfoort",
+      "division": "F2",
+      "roleId": "1567289418115588320",
+      "roleName": "🏁 Van Amersfoort",
+      "slots": {
+        "boss": {
+          "roleId": "1567289241824657429",
+          "label": "💼 Team Boss",
+          "members": []
+        },
+        "principal": {
+          "roleId": "1567289247952801842",
+          "label": "📋 Team Principal",
+          "members": []
+        },
+        "fia": {
+          "roleId": "1567485765817208963",
+          "label": "🏁 FIA",
+          "members": []
+        },
+        "driver": {
+          "roleId": "1567289254374285445",
+          "label": "⏱️ Driver",
+          "members": []
+        },
+        "reserve": {
+          "roleId": "1567289260611215421",
+          "label": "🎯 Reserve",
+          "members": []
+        },
+        "crew": {
+          "roleId": "1567289266525176011",
+          "label": "🧯 Pit Crew",
+          "members": []
+        },
+        "engineer": {
+          "roleId": "1567481658729308191",
+          "label": "🔧 Engineer",
+          "members": []
+        }
+      }
+    },
+    {
+      "key": "aix",
+      "name": "AIX Racing",
+      "division": "F2",
+      "roleId": null,
+      "roleName": null,
+      "slots": {
+        "boss": {
+          "roleId": "1567289241824657429",
+          "label": "💼 Team Boss",
+          "members": []
+        },
+        "principal": {
+          "roleId": "1567289247952801842",
+          "label": "📋 Team Principal",
+          "members": []
+        },
+        "fia": {
+          "roleId": "1567485765817208963",
+          "label": "🏁 FIA",
+          "members": []
+        },
+        "driver": {
+          "roleId": "1567289254374285445",
+          "label": "⏱️ Driver",
+          "members": []
+        },
+        "reserve": {
+          "roleId": "1567289260611215421",
+          "label": "🎯 Reserve",
+          "members": []
+        },
+        "crew": {
+          "roleId": "1567289266525176011",
+          "label": "🧯 Pit Crew",
+          "members": []
+        },
+        "engineer": {
+          "roleId": "1567481658729308191",
+          "label": "🔧 Engineer",
+          "members": []
+        }
+      }
+    }
+  ]
+}

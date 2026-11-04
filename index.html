@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Vanta Racing Series</title>
+  <meta name="description" content="Vanta Racing Series — Roblox racing league with F1 and F2 divisions, live standings, fantasy championship and a steward desk.">
+  <link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+  <main class="wrap"><div id="app"><p class="muted">Loading…</p></div></main>
+  <script src="assets/app.js"></script>
+  <script>
+    (async () => {
+      const host = document.getElementById("app");
+      try {
+        const cfg = await VRS.json("data/config.json");
+        const lineups = await VRS.json("data/lineups.json");
+        const results = await VRS.json("data/results.json");
+        const schedule = await VRS.json("data/schedule.json");
+        const decisions = await VRS.json("data/decisions.json");
+        VRS.shell(cfg, "index.html");
+
+        const rounds = results.rounds || [];
+        const teams = lineups.teams || [];
+        const slots = cfg.slots || [];
+        const seats = teams.length * slots.reduce((n, s) => n + (s.capacity || 1), 0);
+        const filled = teams.reduce(
+          (n, team) =>
+            n +
+            Object.values(team.slots || {}).reduce(
+              (m, slot) => m + (slot.members || []).length,
+              0
+            ),
+          0
+        );
+        const nextRound = (schedule.rounds || [])
+          .filter((r) => r.date && Date.parse(r.date) >= Date.now())
+          .sort((a, b) => Date.parse(a.date) - Date.parse(b.date))[0];
+
+        const f1 = VRS.computeStandings(rounds, cfg, "F1");
+        const top = f1.drivers.slice(0, 5);
+        const latest = (decisions.decisions || []).slice(-3).reverse();
+
+        host.innerHTML = `
+          ${VRS.demoBanner(rounds)}
+          <div class="hero">
+            <div>
+              <h1>Two divisions. Twenty-one teams. One grid.</h1>
+              <p class="lead">Vanta Racing Series is a Roblox racing league where the
+              paperwork is real: every team has a budget, every signing costs it, and
+              every seat is written down. Lineups come straight from Discord roles.</p>
+              <div class="row">
+                <a class="btn" href="grid.html">See the grid</a>
+                <a class="btn" href="races.html">Race centre</a>
+                ${cfg.discordInvite ? `<a class="btn" href="${VRS.esc(cfg.discordInvite)}" target="_blank" rel="noopener">Join the Discord</a>` : ""}
+              </div>
+            </div>
+            <div class="card">
+              <h2 style="margin-top:0">Season ${VRS.esc(cfg.season || "")}</h2>
+              <div class="stats">
+                <div class="stat"><b>${teams.length}</b><span>teams</span></div>
+                <div class="stat"><b>${filled}/${seats}</b><span>seats filled</span></div>
+                <div class="stat"><b>${f1.rounds}</b><span>F1 rounds scored</span></div>
+                <div class="stat"><b>${(schedule.rounds || []).length}</b><span>rounds scheduled</span></div>
+              </div>
+              <p class="small muted" style="margin:14px 0 0">Lineups refresh every
+              ${VRS.esc(cfg.syncHours || 5)} hours from Discord${
+                lineups.generatedAt
+                  ? ` — last sync ${VRS.esc(new Date(lineups.generatedAt).toLocaleString())}`
+                  : ""
+              }.</p>
+            </div>
+          </div>
+
+          <h2>F1 championship</h2>
+          <div class="card">
+            ${
+              top.length
+                ? `<table><thead><tr><th class="pos">#</th><th>Driver</th><th>Team</th>
+                   <th class="num">Wins</th><th class="num">Podiums</th><th class="num">Pts</th></tr></thead>
+                   <tbody>${top
+                     .map(
+                       (d, i) => `<tr><td class="pos">${i + 1}</td>
+                       <td><b>${VRS.esc(d.driver)}</b></td>
+                       <td class="muted">${VRS.esc(VRS.teamName(lineups, d.team))}</td>
+                       <td class="num">${d.wins}</td><td class="num">${d.podiums}</td>
+                       <td class="num"><b>${d.points}</b></td></tr>`
+                     )
+                     .join("")}</tbody></table>
+                   <p class="small muted" style="margin:10px 0 0">
+                   <a href="races.html">Full standings →</a></p>`
+                : `<p class="muted">No results published yet. The first timing sheet
+                   will appear here after the opening round.</p>`
+            }
+          </div>
+
+          <div class="grid2" style="margin-top:18px">
+            <div class="card">
+              <h2 style="margin-top:0">Next round</h2>
+              ${
+                nextRound
+                  ? `<div class="spread">
+                      <div>
+                        <h3 style="font-size:18px;margin:0 0 4px">R${VRS.esc(nextRound.round)} · ${VRS.esc(nextRound.name || nextRound.circuit)}</h3>
+                        <div class="muted small">${VRS.esc(nextRound.circuit || "")} · ${VRS.esc(nextRound.country || "")} · ${VRS.esc(nextRound.laps || "—")} laps</div>
+                      </div>
+                      <span class="pill">${VRS.esc(nextRound.date || "TBA")}</span>
+                    </div>
+                    <p class="small muted" style="margin:10px 0 0">Pit window
+                    <b>${VRS.esc(nextRound.pitWindow || "—")}</b></p>`
+                  : `<p class="muted">No further rounds on the calendar.
+                     <a href="schedule.html">Calendar →</a></p>`
+              }
+            </div>
+            <div class="card">
+              <h2 style="margin-top:0">Latest steward decisions</h2>
+              ${
+                latest.length
+                  ? `<ul class="list">${latest
+                      .map(
+                        (d) => `<li><b>${VRS.esc(d.subject || "—")}</b>
+                        <span class="chip">R${VRS.esc(d.round)}</span>
+                        <div class="small muted">${VRS.esc((d.text || "").slice(0, 140))}</div></li>`
+                      )
+                      .join("")}</ul>`
+                  : `<p class="muted">Nothing published yet. Decisions land here first,
+                     straight from the <a href="stewards.html">stewarding desk</a>.</p>`
+              }
+            </div>
+          </div>`;
+      } catch (error) {
+        VRS.fail(host, error);
+      }
+    })();
+  </script>
+</body>
+</html>

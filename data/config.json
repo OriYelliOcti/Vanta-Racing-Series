@@ -1,0 +1,24 @@
+{
+  "league": "Vanta Racing Series",
+  "season": "2026",
+  "discordInvite": "https://discord.gg/cQ2YSaeqQG",
+  "syncHours": 5,
+  "divisions": ["F1", "F2"],
+  "slots": [
+    { "key": "boss", "code": "TB", "label": "Team Boss", "capacity": 1 },
+    { "key": "principal", "code": "TP", "label": "Team Principal", "capacity": 1 },
+    { "key": "fia", "code": "FIA", "label": "FIA", "capacity": 1 },
+    { "key": "driver", "code": "DRI", "label": "Driver", "capacity": 2 },
+    { "key": "reserve", "code": "RES", "label": "Reserve", "capacity": 1 },
+    { "key": "crew", "code": "PC", "label": "Pit Crew", "capacity": 3 },
+    { "key": "engineer", "code": "ENG", "label": "Engineer", "capacity": 1 }
+  ],
+  "scoring": {
+    "race": [25, 18, 15, 12, 10, 8, 6, 4, 2, 1],
+    "fastestLap": 1,
+    "pole": 0
+  },
+  "bridge": {
+    "defaultUrl": "http://127.0.0.1:8787"
+  }
+}

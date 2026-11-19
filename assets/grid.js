@@ -98,20 +98,37 @@
       const own = slotsFor(team);
       const rows = [];
 
-      // One line per seat: a slot with capacity 2 is two seats, not one row.
       for (const slot of own) {
         if (slotFilter && slot.key !== slotFilter) continue;
         const members = filledOf(team, slot.key);
         const capacity = Math.max(slot.capacity || 1, members.length);
-        for (let index = 0; index < capacity; index += 1) {
-          const member = members[index];
-          if (state === "open" && member) continue;
-          if (state === "filled" && !member) continue;
+        const seats = slot.seats || [];
+        const seatLabel = (index) =>
+          seats[index] ||
+          (seats.length === 1 ? `${seats[0]} ${index + 1}` : `Seat ${index + 1}`);
+
+        // Every filled seat gets its own line, labelled D1/D2, RD1/RD2, …
+        if (state !== "open") {
+          members.forEach((member, index) => {
+            rows.push(`<div class="slot">
+              <div class="code">${VRS.esc(slot.code)}</div>
+              <div class="seat">${VRS.esc(seatLabel(index))}</div>
+              <div class="who">${VRS.esc(member.name)}</div>
+            </div>`);
+          });
+        }
+
+        // All open seats of one role share a single line.
+        const open = Math.max(0, capacity - members.length);
+        if (open > 0 && state !== "filled") {
+          const label =
+            open === 1
+              ? seatLabel(members.length)
+              : `${seatLabel(members.length)} · ${seatLabel(capacity - 1)}`;
           rows.push(`<div class="slot">
-            <div class="code">${index === 0 ? VRS.esc(slot.code) : ""}</div>
-            <div class="who ${member ? "" : "vacant"}">${
-              member ? VRS.esc(member.name) : "vacant"
-            }</div>
+            <div class="code">${VRS.esc(slot.code)}</div>
+            <div class="seat">${VRS.esc(label)}</div>
+            <div class="who vacant">${open === 1 ? "vacant" : `${open} seats open`}</div>
           </div>`);
         }
       }

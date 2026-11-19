@@ -3,22 +3,149 @@
   "season": "2026",
   "discordInvite": "https://discord.gg/cQ2YSaeqQG",
   "syncHours": 5,
-  "divisions": ["F1", "F2"],
+  "divisions": [
+    "F1",
+    "F2"
+  ],
   "slots": [
-    { "key": "boss", "code": "👑", "label": "Team owner", "capacity": 1 },
-    { "key": "principal", "code": "🧯", "label": "TP", "capacity": 1 },
-    { "key": "engineer", "code": "🔧", "label": "Engineer", "capacity": 1 },
-    { "key": "driver", "code": "🏎️", "label": "D1 · D2", "capacity": 2 },
-    { "key": "reserve", "code": "🏎️", "label": "RD1 · RD2", "capacity": 2 },
-    { "key": "crew", "code": "🛞", "label": "Pit crew", "capacity": 3 },
-    { "key": "president", "code": "👮", "label": "President", "capacity": 1, "teams": ["fia"] },
-    { "key": "assistants", "code": "🧑‍✈️", "label": "Assistants", "capacity": 3, "teams": ["fia"] },
-    { "key": "directors", "code": "💼", "label": "Directors", "capacity": 3, "teams": ["fia"] },
-    { "key": "safety", "code": "🚓", "label": "Safety car", "capacity": 1, "teams": ["fia"] },
-    { "key": "stewards", "code": "👷", "label": "Stewards", "capacity": 3, "teams": ["fia"] }
+    {
+      "key": "boss",
+      "code": "👑",
+      "label": "Team owner",
+      "capacity": 1,
+      "seats": [
+        "OWNER"
+      ]
+    },
+    {
+      "key": "principal",
+      "code": "🧯",
+      "label": "TP",
+      "capacity": 1,
+      "seats": [
+        "TP"
+      ]
+    },
+    {
+      "key": "engineer",
+      "code": "🔧",
+      "label": "Engineer",
+      "capacity": 1,
+      "seats": [
+        "ENGINEER"
+      ]
+    },
+    {
+      "key": "driver",
+      "code": "🏎️",
+      "label": "D1 · D2",
+      "capacity": 2,
+      "seats": [
+        "D1",
+        "D2"
+      ]
+    },
+    {
+      "key": "reserve",
+      "code": "🎯",
+      "label": "RD1 · RD2",
+      "capacity": 2,
+      "seats": [
+        "RD1",
+        "RD2"
+      ]
+    },
+    {
+      "key": "crew",
+      "code": "🛞",
+      "label": "Pit crew",
+      "capacity": 3,
+      "seats": [
+        "CREW 1",
+        "CREW 2",
+        "CREW 3"
+      ]
+    },
+    {
+      "key": "president",
+      "code": "👮",
+      "label": "President",
+      "capacity": 1,
+      "teams": [
+        "fia"
+      ],
+      "seats": [
+        "PRESIDENT"
+      ]
+    },
+    {
+      "key": "assistants",
+      "code": "🧑‍✈️",
+      "label": "Assistants",
+      "capacity": 3,
+      "teams": [
+        "fia"
+      ],
+      "seats": [
+        "ASSISTANT 1",
+        "ASSISTANT 2",
+        "ASSISTANT 3"
+      ]
+    },
+    {
+      "key": "directors",
+      "code": "💼",
+      "label": "Directors",
+      "capacity": 3,
+      "teams": [
+        "fia"
+      ],
+      "seats": [
+        "DIRECTOR 1",
+        "DIRECTOR 2",
+        "DIRECTOR 3"
+      ]
+    },
+    {
+      "key": "safety",
+      "code": "🚓",
+      "label": "Safety car",
+      "capacity": 1,
+      "teams": [
+        "fia"
+      ],
+      "seats": [
+        "SAFETY CAR"
+      ]
+    },
+    {
+      "key": "stewards",
+      "code": "👷",
+      "label": "Stewards",
+      "capacity": 3,
+      "teams": [
+        "fia"
+      ],
+      "seats": [
+        "STEWARD 1",
+        "STEWARD 2",
+        "STEWARD 3"
+      ]
+    }
   ],
   "scoring": {
-    "race": [25, 18, 15, 12, 10, 8, 6, 4, 2, 1],
+    "race": [
+      25,
+      18,
+      15,
+      12,
+      10,
+      8,
+      6,
+      4,
+      2,
+      1
+    ],
     "fastestLap": 1,
     "pole": 0
   },

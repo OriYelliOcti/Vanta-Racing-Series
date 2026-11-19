@@ -95,6 +95,22 @@ def problem(entry: object) -> str:
     return ""
 
 
+def commit_with(message: str) -> subprocess.CompletedProcess:
+    """Commit, supplying an identity only when the repository has none."""
+    email = git("config", "user.email").stdout.strip()
+    name = git("config", "user.name").stdout.strip()
+    args = ["commit", "-m", message]
+    if not email or not name:
+        args = [
+            "-c",
+            "user.name=" + (name or "FIA Steward"),
+            "-c",
+            "user.email=" + (email or "fia@vanta-racing.invalid"),
+            *args,
+        ]
+    return git(*args)
+
+
 def read_decisions() -> dict:
     with open(DECISIONS, encoding="utf-8") as handle:
         return json.load(handle)
@@ -150,7 +166,7 @@ def publish(entry: dict, who: str, dry_run: bool) -> dict:
             decision["round"],
             decision["subject"] or decision["type"],
         )
-        committed = git("commit", "-m", message)
+        committed = commit_with(message)
         if committed.returncode != 0:
             git("restore", "--source=HEAD", "--", "data/decisions.json")
             raise RuntimeError(committed.stderr.strip() or "git commit failed")

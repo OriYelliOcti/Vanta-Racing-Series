@@ -18,7 +18,25 @@
       const table = VRS.computeStandings(rounds, cfg, division);
       table.drivers.forEach((row) => standings.set(row.driver, { ...row, division }));
     }
-    const drivers = [...standings.values()].sort((a, b) => b.points - a.points);
+
+    // Picks come from the published lineups, so the championship is playable
+    // before the first race; points are merged in from the scored results.
+    const roster = new Map();
+    for (const team of lineups.teams || []) {
+      if (!divisions.includes(team.division)) continue;
+      for (const member of (((team.slots || {}).driver || {}).members || [])) {
+        const scored = standings.get(member.name) || {};
+        roster.set(member.name, {
+          driver: member.name,
+          team: team.key,
+          division: team.division,
+          points: scored.points || 0,
+        });
+      }
+    }
+    const drivers = [...roster.values()].sort(
+      (a, b) => b.points - a.points || a.driver.localeCompare(b.driver)
+    );
     const teamLabel = (key) => VRS.teamName(lineups, key);
 
     host.innerHTML = `${VRS.demoBanner(rounds)}
@@ -63,7 +81,9 @@
     }
 
     function constructorOptions(selected) {
-      const teams = (lineups.teams || []).slice().sort((a, b) => a.name.localeCompare(b.name));
+      const teams = (lineups.teams || [])
+        .filter((t) => divisions.includes(t.division))
+        .sort((a, b) => a.name.localeCompare(b.name));
       return teams
         .map(
           (t) =>
@@ -75,6 +95,11 @@
     }
 
     function renderBuilder() {
+      if (!drivers.length) {
+        document.getElementById("builder").innerHTML = `<div class="warn">No drivers
+        are published yet. The grid fills up as teams sign drivers in Discord.</div>`;
+        return;
+      }
       const taken = picks.drivers.filter(Boolean);
       document.getElementById("builder").innerHTML = `
         <label class="field"><span>Driver 1</span>

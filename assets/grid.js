@@ -55,13 +55,20 @@
       return slot.members || [];
     };
 
+    // A seat can be limited to certain teams (the FIA seats belong to the FIA team).
+    // Racing seats only exist at racing teams, so the FIA card shows its own seats.
+    const slotApplies = (slot, team) =>
+      slot.teams ? slot.teams.includes(team.key) : team.division !== "FIA";
+    const slotsFor = (team) => SLOTS.filter((slot) => slotApplies(slot, team));
+
     function totals() {
       const rows = SLOTS.map((slot) => {
-        const total = teams.length * (slot.capacity || 1);
-        const filled = teams.reduce((sum, team) => sum + filledOf(team, slot.key).length, 0);
+        const owners = teams.filter((team) => slotApplies(slot, team));
+        const total = owners.length * (slot.capacity || 1);
+        const filled = owners.reduce((sum, team) => sum + filledOf(team, slot.key).length, 0);
         return { ...slot, total, filled };
       });
-      return rows;
+      return rows.filter((row) => row.total > 0);
     }
 
     function renderTotals() {
@@ -88,7 +95,8 @@
     function teamCard(team) {
       const slotFilter = slotSelect.value;
       const state = stateSelect.value;
-      const rows = SLOTS.filter((s) => !slotFilter || s.key === slotFilter).map((slot) => {
+      const own = slotsFor(team);
+      const rows = own.filter((s) => !slotFilter || s.key === slotFilter).map((slot) => {
         const members = filledOf(team, slot.key);
         if (state === "open" && members.length) return "";
         if (state === "filled" && !members.length) return "";
@@ -102,13 +110,13 @@
       });
       const body = rows.filter(Boolean).join("");
       if (!body) return "";
-      const filled = SLOTS.reduce((sum, s) => sum + filledOf(team, s.key).length, 0);
+      const filled = own.reduce((sum, s) => sum + filledOf(team, s.key).length, 0);
       return `<article class="card team">
         <div class="head">
           <div class="name">${VRS.esc(team.name)}</div>
           ${VRS.divisionChip(team.division)}
         </div>
-        <div class="small muted">${filled} of ${SLOTS.reduce(
+        <div class="small muted">${filled} of ${own.reduce(
           (sum, s) => sum + (s.capacity || 1),
           0
         )} seats filled</div>

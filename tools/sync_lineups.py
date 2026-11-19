@@ -5,10 +5,11 @@ Run it on the machine that holds the bot token, every five hours:
 
     */5 * * * * cd ~/vrs-site && ~/vanta-bot/.venv/bin/python tools/sync_lineups.py --push
 
-Team membership comes from the team role (McLaren, Ferrari, ...), the slot comes
-from the staff role (Team Boss, Team Principal, FIA, Driver, Reserve, Pit Crew,
+Team membership comes from the team role (McLaren, Ferrari, ... , FIA), the slot
+comes from the staff role (Team Boss, Team Principal, Driver, Reserve, Pit Crew,
 Engineer). Nothing is invented: a seat is filled only if a member carries both
-the team role and the slot role.
+the team role and the slot role. FIA is its own team and has its own single FIA
+seat; the racing teams do not carry a FIA seat.
 """
 
 import argparse
@@ -39,13 +40,23 @@ TEAMS = [
     ("mp_motorsport", "MP Motorsport", "F2"), ("trident", "Trident", "F2"),
     ("rodin", "Rodin Motorsport", "F2"), ("van_amersfoort", "Van Amersfoort", "F2"),
     ("aix", "AIX Racing", "F2"),
+    ("fia", "FIA", "FIA"),
 ]
 
 SLOTS = [
-    ("boss", "Team Boss"), ("principal", "Team Principal"), ("fia", "FIA"),
-    ("driver", "Driver"), ("reserve", "Reserve"), ("crew", "Pit Crew"),
-    ("engineer", "Engineer"),
+    ("boss", "Team Boss"), ("principal", "Team Principal"),
+    ("engineer", "Engineer"), ("driver", "Driver"),
+    ("reserve", "Reserve"), ("crew", "Pit Crew"),
 ]
+
+# Seats that only one team has — the FIA team's own five seats.
+ORG_SLOTS = {
+    "fia": [
+        ("president", "President"), ("assistants", "Assistant"),
+        ("directors", "Director"), ("safety", "Safety Car"),
+        ("stewards", "Steward"),
+    ],
+}
 
 
 def token():
@@ -111,7 +122,7 @@ def main():
     print(f"{len(roles)} roles, {len(people)} members")
 
     slot_roles = {}
-    for key, label in SLOTS:
+    for key, label in SLOTS + [s for extra in ORG_SLOTS.values() for s in extra]:
         rid, name = role_id(roles, label)
         if rid:
             slot_roles[key] = {"id": rid, "label": name}
@@ -127,7 +138,8 @@ def main():
             "roleName": team_role_name,
             "slots": {},
         }
-        for slot_key, slot_label in SLOTS:
+        team_slots = ORG_SLOTS[team_key] if team_key in ORG_SLOTS else SLOTS
+        for slot_key, slot_label in team_slots:
             info = slot_roles.get(slot_key, {})
             entry["slots"][slot_key] = {
                 "roleId": info.get("id"),
@@ -140,7 +152,9 @@ def main():
                     continue
                 user = person.get("user", {})
                 display = person.get("nick") or user.get("global_name") or user.get("username") or "unknown"
-                for slot_key, slot_label in SLOTS:
+                # Nicknames carry "Name | Team | Number | Country"; the grid shows the name.
+                display = display.split(" | ")[0].strip() or display
+                for slot_key, slot_label in team_slots:
                     rid = slot_roles.get(slot_key, {}).get("id")
                     if rid and rid in person.get("roles", []):
                         entry["slots"][slot_key]["members"].append(

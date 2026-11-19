@@ -5,13 +5,17 @@
   "syncHours": 5,
   "divisions": ["F1", "F2"],
   "slots": [
-    { "key": "boss", "code": "TB", "label": "Team Boss", "capacity": 1 },
-    { "key": "principal", "code": "TP", "label": "Team Principal", "capacity": 1 },
-    { "key": "fia", "code": "FIA", "label": "FIA", "capacity": 1 },
-    { "key": "driver", "code": "DRI", "label": "Driver", "capacity": 2 },
-    { "key": "reserve", "code": "RES", "label": "Reserve", "capacity": 1 },
-    { "key": "crew", "code": "PC", "label": "Pit Crew", "capacity": 3 },
-    { "key": "engineer", "code": "ENG", "label": "Engineer", "capacity": 1 }
+    { "key": "boss", "code": "👑", "label": "Team owner", "capacity": 1 },
+    { "key": "principal", "code": "🧯", "label": "TP", "capacity": 1 },
+    { "key": "engineer", "code": "🔧", "label": "Engineer", "capacity": 1 },
+    { "key": "driver", "code": "🏎️", "label": "D1 · D2", "capacity": 2 },
+    { "key": "reserve", "code": "🏎️", "label": "RD1 · RD2", "capacity": 2 },
+    { "key": "crew", "code": "🛞", "label": "Pit crew", "capacity": 3 },
+    { "key": "president", "code": "👮", "label": "President", "capacity": 1, "teams": ["fia"] },
+    { "key": "assistants", "code": "🧑‍✈️", "label": "Assistants", "capacity": 3, "teams": ["fia"] },
+    { "key": "directors", "code": "💼", "label": "Directors", "capacity": 3, "teams": ["fia"] },
+    { "key": "safety", "code": "🚓", "label": "Safety car", "capacity": 1, "teams": ["fia"] },
+    { "key": "stewards", "code": "👷", "label": "Stewards", "capacity": 3, "teams": ["fia"] }
   ],
   "scoring": {
     "race": [25, 18, 15, 12, 10, 8, 6, 4, 2, 1],

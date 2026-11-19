@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-04T10:42:21+00:00",
+  "generatedAt": "2026-11-19T17:06:34+00:00",
   "source": "discord-roles",
   "guildId": "1567277556661616770",
   "teams": [
@@ -20,9 +20,9 @@
           "label": "📋 Team Principal",
           "members": []
         },
-        "fia": {
-          "roleId": "1567485765817208963",
-          "label": "🏁 FIA",
+        "engineer": {
+          "roleId": "1567481658729308191",
+          "label": "🔧 Engineer",
           "members": []
         },
         "driver": {
@@ -38,11 +38,6 @@
         "crew": {
           "roleId": "1567289266525176011",
           "label": "🧯 Pit Crew",
-          "members": []
-        },
-        "engineer": {
-          "roleId": "1567481658729308191",
-          "label": "🔧 Engineer",
           "members": []
         }
       }
@@ -64,15 +59,24 @@
           "label": "📋 Team Principal",
           "members": []
         },
-        "fia": {
-          "roleId": "1567485765817208963",
-          "label": "🏁 FIA",
+        "engineer": {
+          "roleId": "1567481658729308191",
+          "label": "🔧 Engineer",
           "members": []
         },
         "driver": {
           "roleId": "1567289254374285445",
           "label": "⏱️ Driver",
-          "members": []
+          "members": [
+            {
+              "id": "1033809952814420059",
+              "name": "Mirinda"
+            },
+            {
+              "id": "1307001657564987412",
+              "name": "drsferra7"
+            }
+          ]
         },
         "reserve": {
           "roleId": "1567289260611215421",
@@ -82,11 +86,6 @@
         "crew": {
           "roleId": "1567289266525176011",
           "label": "🧯 Pit Crew",
-          "members": []
-        },
-        "engineer": {
-          "roleId": "1567481658729308191",
-          "label": "🔧 Engineer",
           "members": []
         }
       }
@@ -108,9 +107,9 @@
           "label": "📋 Team Principal",
           "members": []
         },
-        "fia": {
-          "roleId": "1567485765817208963",
-          "label": "🏁 FIA",
+        "engineer": {
+          "roleId": "1567481658729308191",
+          "label": "🔧 Engineer",
           "members": []
         },
         "driver": {
@@ -126,11 +125,6 @@
         "crew": {
           "roleId": "1567289266525176011",
           "label": "🧯 Pit Crew",
-          "members": []
-        },
-        "engineer": {
-          "roleId": "1567481658729308191",
-          "label": "🔧 Engineer",
           "members": []
         }
       }
@@ -152,9 +146,9 @@
           "label": "📋 Team Principal",
           "members": []
         },
-        "fia": {
-          "roleId": "1567485765817208963",
-          "label": "🏁 FIA",
+        "engineer": {
+          "roleId": "1567481658729308191",
+          "label": "🔧 Engineer",
           "members": []
         },
         "driver": {
@@ -170,11 +164,6 @@
         "crew": {
           "roleId": "1567289266525176011",
           "label": "🧯 Pit Crew",
-          "members": []
-        },
-        "engineer": {
-          "roleId": "1567481658729308191",
-          "label": "🔧 Engineer",
           "members": []
         }
       }
@@ -196,9 +185,9 @@
           "label": "📋 Team Principal",
           "members": []
         },
-        "fia": {
-          "roleId": "1567485765817208963",
-          "label": "🏁 FIA",
+        "engineer": {
+          "roleId": "1567481658729308191",
+          "label": "🔧 Engineer",
           "members": []
         },
         "driver": {
@@ -214,11 +203,6 @@
         "crew": {
           "roleId": "1567289266525176011",
           "label": "🧯 Pit Crew",
-          "members": []
-        },
-        "engineer": {
-          "roleId": "1567481658729308191",
-          "label": "🔧 Engineer",
           "members": []
         }
       }
@@ -240,15 +224,20 @@
           "label": "📋 Team Principal",
           "members": []
         },
-        "fia": {
-          "roleId": "1567485765817208963",
-          "label": "🏁 FIA",
+        "engineer": {
+          "roleId": "1567481658729308191",
+          "label": "🔧 Engineer",
           "members": []
         },
         "driver": {
           "roleId": "1567289254374285445",
           "label": "⏱️ Driver",
-          "members": []
+          "members": [
+            {
+              "id": "1567886399011688541",
+              "name": "Gettingoe"
+            }
+          ]
         },
         "reserve": {
           "roleId": "1567289260611215421",
@@ -258,11 +247,6 @@
         "crew": {
           "roleId": "1567289266525176011",
           "label": "🧯 Pit Crew",
-          "members": []
-        },
-        "engineer": {
-          "roleId": "1567481658729308191",
-          "label": "🔧 Engineer",
           "members": []
         }
       }
@@ -284,9 +268,9 @@
           "label": "📋 Team Principal",
           "members": []
         },
-        "fia": {
-          "roleId": "1567485765817208963",
-          "label": "🏁 FIA",
+        "engineer": {
+          "roleId": "1567481658729308191",
+          "label": "🔧 Engineer",
           "members": []
         },
         "driver": {
@@ -302,11 +286,6 @@
         "crew": {
           "roleId": "1567289266525176011",
           "label": "🧯 Pit Crew",
-          "members": []
-        },
-        "engineer": {
-          "roleId": "1567481658729308191",
-          "label": "🔧 Engineer",
           "members": []
         }
       }
@@ -328,9 +307,9 @@
           "label": "📋 Team Principal",
           "members": []
         },
-        "fia": {
-          "roleId": "1567485765817208963",
-          "label": "🏁 FIA",
+        "engineer": {
+          "roleId": "1567481658729308191",
+          "label": "🔧 Engineer",
           "members": []
         },
         "driver": {
@@ -346,11 +325,6 @@
         "crew": {
           "roleId": "1567289266525176011",
           "label": "🧯 Pit Crew",
-          "members": []
-        },
-        "engineer": {
-          "roleId": "1567481658729308191",
-          "label": "🔧 Engineer",
           "members": []
         }
       }
@@ -372,15 +346,20 @@
           "label": "📋 Team Principal",
           "members": []
         },
-        "fia": {
-          "roleId": "1567485765817208963",
-          "label": "🏁 FIA",
+        "engineer": {
+          "roleId": "1567481658729308191",
+          "label": "🔧 Engineer",
           "members": []
         },
         "driver": {
           "roleId": "1567289254374285445",
           "label": "⏱️ Driver",
-          "members": []
+          "members": [
+            {
+              "id": "691655899772616705",
+              "name": "RoundChain1092"
+            }
+          ]
         },
         "reserve": {
           "roleId": "1567289260611215421",
@@ -390,11 +369,6 @@
         "crew": {
           "roleId": "1567289266525176011",
           "label": "🧯 Pit Crew",
-          "members": []
-        },
-        "engineer": {
-          "roleId": "1567481658729308191",
-          "label": "🔧 Engineer",
           "members": []
         }
       }
@@ -416,9 +390,9 @@
           "label": "📋 Team Principal",
           "members": []
         },
-        "fia": {
-          "roleId": "1567485765817208963",
-          "label": "🏁 FIA",
+        "engineer": {
+          "roleId": "1567481658729308191",
+          "label": "🔧 Engineer",
           "members": []
         },
         "driver": {
@@ -434,11 +408,6 @@
         "crew": {
           "roleId": "1567289266525176011",
           "label": "🧯 Pit Crew",
-          "members": []
-        },
-        "engineer": {
-          "roleId": "1567481658729308191",
-          "label": "🔧 Engineer",
           "members": []
         }
       }
@@ -460,9 +429,9 @@
           "label": "📋 Team Principal",
           "members": []
         },
-        "fia": {
-          "roleId": "1567485765817208963",
-          "label": "🏁 FIA",
+        "engineer": {
+          "roleId": "1567481658729308191",
+          "label": "🔧 Engineer",
           "members": []
         },
         "driver": {
@@ -478,11 +447,6 @@
         "crew": {
           "roleId": "1567289266525176011",
           "label": "🧯 Pit Crew",
-          "members": []
-        },
-        "engineer": {
-          "roleId": "1567481658729308191",
-          "label": "🔧 Engineer",
           "members": []
         }
       }
@@ -504,9 +468,9 @@
           "label": "📋 Team Principal",
           "members": []
         },
-        "fia": {
-          "roleId": "1567485765817208963",
-          "label": "🏁 FIA",
+        "engineer": {
+          "roleId": "1567481658729308191",
+          "label": "🔧 Engineer",
           "members": []
         },
         "driver": {
@@ -522,11 +486,6 @@
         "crew": {
           "roleId": "1567289266525176011",
           "label": "🧯 Pit Crew",
-          "members": []
-        },
-        "engineer": {
-          "roleId": "1567481658729308191",
-          "label": "🔧 Engineer",
           "members": []
         }
       }
@@ -548,9 +507,9 @@
           "label": "📋 Team Principal",
           "members": []
         },
-        "fia": {
-          "roleId": "1567485765817208963",
-          "label": "🏁 FIA",
+        "engineer": {
+          "roleId": "1567481658729308191",
+          "label": "🔧 Engineer",
           "members": []
         },
         "driver": {
@@ -566,11 +525,6 @@
         "crew": {
           "roleId": "1567289266525176011",
           "label": "🧯 Pit Crew",
-          "members": []
-        },
-        "engineer": {
-          "roleId": "1567481658729308191",
-          "label": "🔧 Engineer",
           "members": []
         }
       }
@@ -592,9 +546,9 @@
           "label": "📋 Team Principal",
           "members": []
         },
-        "fia": {
-          "roleId": "1567485765817208963",
-          "label": "🏁 FIA",
+        "engineer": {
+          "roleId": "1567481658729308191",
+          "label": "🔧 Engineer",
           "members": []
         },
         "driver": {
@@ -610,11 +564,6 @@
         "crew": {
           "roleId": "1567289266525176011",
           "label": "🧯 Pit Crew",
-          "members": []
-        },
-        "engineer": {
-          "roleId": "1567481658729308191",
-          "label": "🔧 Engineer",
           "members": []
         }
       }
@@ -636,15 +585,20 @@
           "label": "📋 Team Principal",
           "members": []
         },
-        "fia": {
-          "roleId": "1567485765817208963",
-          "label": "🏁 FIA",
+        "engineer": {
+          "roleId": "1567481658729308191",
+          "label": "🔧 Engineer",
           "members": []
         },
         "driver": {
           "roleId": "1567289254374285445",
           "label": "⏱️ Driver",
-          "members": []
+          "members": [
+            {
+              "id": "1049326340337315904",
+              "name": "El Kebabs…"
+            }
+          ]
         },
         "reserve": {
           "roleId": "1567289260611215421",
@@ -654,11 +608,6 @@
         "crew": {
           "roleId": "1567289266525176011",
           "label": "🧯 Pit Crew",
-          "members": []
-        },
-        "engineer": {
-          "roleId": "1567481658729308191",
-          "label": "🔧 Engineer",
           "members": []
         }
       }
@@ -680,9 +629,9 @@
           "label": "📋 Team Principal",
           "members": []
         },
-        "fia": {
-          "roleId": "1567485765817208963",
-          "label": "🏁 FIA",
+        "engineer": {
+          "roleId": "1567481658729308191",
+          "label": "🔧 Engineer",
           "members": []
         },
         "driver": {
@@ -698,11 +647,6 @@
         "crew": {
           "roleId": "1567289266525176011",
           "label": "🧯 Pit Crew",
-          "members": []
-        },
-        "engineer": {
-          "roleId": "1567481658729308191",
-          "label": "🔧 Engineer",
           "members": []
         }
       }
@@ -724,9 +668,9 @@
           "label": "📋 Team Principal",
           "members": []
         },
-        "fia": {
-          "roleId": "1567485765817208963",
-          "label": "🏁 FIA",
+        "engineer": {
+          "roleId": "1567481658729308191",
+          "label": "🔧 Engineer",
           "members": []
         },
         "driver": {
@@ -742,11 +686,6 @@
         "crew": {
           "roleId": "1567289266525176011",
           "label": "🧯 Pit Crew",
-          "members": []
-        },
-        "engineer": {
-          "roleId": "1567481658729308191",
-          "label": "🔧 Engineer",
           "members": []
         }
       }
@@ -768,9 +707,9 @@
           "label": "📋 Team Principal",
           "members": []
         },
-        "fia": {
-          "roleId": "1567485765817208963",
-          "label": "🏁 FIA",
+        "engineer": {
+          "roleId": "1567481658729308191",
+          "label": "🔧 Engineer",
           "members": []
         },
         "driver": {
@@ -786,11 +725,6 @@
         "crew": {
           "roleId": "1567289266525176011",
           "label": "🧯 Pit Crew",
-          "members": []
-        },
-        "engineer": {
-          "roleId": "1567481658729308191",
-          "label": "🔧 Engineer",
           "members": []
         }
       }
@@ -812,9 +746,9 @@
           "label": "📋 Team Principal",
           "members": []
         },
-        "fia": {
-          "roleId": "1567485765817208963",
-          "label": "🏁 FIA",
+        "engineer": {
+          "roleId": "1567481658729308191",
+          "label": "🔧 Engineer",
           "members": []
         },
         "driver": {
@@ -830,11 +764,6 @@
         "crew": {
           "roleId": "1567289266525176011",
           "label": "🧯 Pit Crew",
-          "members": []
-        },
-        "engineer": {
-          "roleId": "1567481658729308191",
-          "label": "🔧 Engineer",
           "members": []
         }
       }
@@ -856,9 +785,9 @@
           "label": "📋 Team Principal",
           "members": []
         },
-        "fia": {
-          "roleId": "1567485765817208963",
-          "label": "🏁 FIA",
+        "engineer": {
+          "roleId": "1567481658729308191",
+          "label": "🔧 Engineer",
           "members": []
         },
         "driver": {
@@ -874,11 +803,6 @@
         "crew": {
           "roleId": "1567289266525176011",
           "label": "🧯 Pit Crew",
-          "members": []
-        },
-        "engineer": {
-          "roleId": "1567481658729308191",
-          "label": "🔧 Engineer",
           "members": []
         }
       }
@@ -900,9 +824,9 @@
           "label": "📋 Team Principal",
           "members": []
         },
-        "fia": {
-          "roleId": "1567485765817208963",
-          "label": "🏁 FIA",
+        "engineer": {
+          "roleId": "1567481658729308191",
+          "label": "🔧 Engineer",
           "members": []
         },
         "driver": {
@@ -919,10 +843,39 @@
           "roleId": "1567289266525176011",
           "label": "🧯 Pit Crew",
           "members": []
+        }
+      }
+    },
+    {
+      "key": "fia",
+      "name": "FIA",
+      "division": "FIA",
+      "roleId": "1567485765817208963",
+      "roleName": "🏁 FIA",
+      "slots": {
+        "president": {
+          "roleId": null,
+          "label": "President",
+          "members": []
         },
-        "engineer": {
-          "roleId": "1567481658729308191",
-          "label": "🔧 Engineer",
+        "assistants": {
+          "roleId": null,
+          "label": "Assistant",
+          "members": []
+        },
+        "directors": {
+          "roleId": null,
+          "label": "Director",
+          "members": []
+        },
+        "safety": {
+          "roleId": null,
+          "label": "Safety Car",
+          "members": []
+        },
+        "stewards": {
+          "roleId": "1567287682839613450",
+          "label": "⚖️ Steward",
           "members": []
         }
       }

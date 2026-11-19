@@ -41,7 +41,9 @@ const VRS = (() => {
   }
 
   const divisionChip = (division) =>
-    `<span class="chip ${division === "F1" ? "f1" : "f2"}">${esc(division)}</span>`;
+    `<span class="chip ${
+      division === "F1" ? "f1" : division === "F2" ? "f2" : "org"
+    }">${esc(division)}</span>`;
 
   function demoBanner(rounds) {
     if (!rounds.some((r) => r.demo)) return "";

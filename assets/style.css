@@ -66,8 +66,14 @@ p.lead { color: var(--muted); max-width: 62ch; margin: 0 0 18px; }
   font-size: 11.5px; font-weight: 700; letter-spacing: .4px;
   border: 1px solid var(--line); color: var(--muted); background: #0e1218;
 }
+.circuits { display: grid; grid-template-columns: repeat(auto-fill, minmax(210px, 1fr)); gap: 12px; }
+.circuit .flag { font-size: 30px; line-height: 1.1; }
+.circuit h3 { font-size: 18px; margin: 6px 0 2px; }
+.circuit:hover { border-color: #33404f; }
+
 .chip.f1 { color: #ffb3ba; border-color: #4a1f26; }
 .chip.f2 { color: #a9d3ff; border-color: #1f3550; }
+.chip.org { color: #cfd6de; border-color: #2a323d; }
 .chip.open { color: #7ee2b4; border-color: #1d4a38; }
 .chip.taken { color: #ffb4b4; border-color: #4a2323; }
 .chip.demo { color: #ffd97a; border-color: #4a3d18; }

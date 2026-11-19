@@ -23,6 +23,7 @@
     "pole": 0
   },
   "bridge": {
-    "defaultUrl": "http://127.0.0.1:8787"
+    "defaultUrl": "https://vrs-fia-desk-bridge-8jkzgx-preview.freebuff.site",
+    "localUrl": "http://127.0.0.1:8787"
   }
 }

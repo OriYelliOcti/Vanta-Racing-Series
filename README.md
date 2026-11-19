@@ -86,18 +86,16 @@ The desk is not in the navigation. It opens from:
 
 <https://oriyelliocti.github.io/Vanta-Racing-Series/#vrs-FIA>
 
-Access: the FIA password `VRSFIA+` **or** the league's GitHub token. The page
-asks for that one secret and nothing else — no bridge token, no GitHub login.
+Access: the FIA password the league uses. The page asks for that one secret and
+nothing else — no bridge token, no GitHub login.
 
-Publishing is done by a small bridge on the steward's own laptop:
+Publishing goes through the hosted bridge in `desk-worker/`, deployed on Freebuff
+Sites at `https://vrs-fia-desk-bridge-8jkzgx-preview.freebuff.site` and set as
+`bridge.defaultUrl` in `data/config.json`. That deployment needs the `GITHUB_TOKEN`
+secret (a token with **Contents: read and write**) and `DESK_PASSWORD`; the page
+never sees either.
 
-```bash
-cd vrs-site
-python tools/desk_server.py
-# http://127.0.0.1:8787/stewards.html#vrs-FIA
-```
-
-The bridge listens on loopback only, checks the secret, and publishes two things:
+The bridge checks the password and publishes two things:
 
 - **Steward decisions** — appended to `data/decisions.json` plus the audit log.
 - **Race results** — the desk has a result editor: pick the round and division, put
@@ -106,27 +104,36 @@ lap and pole), press Publish. `data/results.json` is updated and the championshi
 home page and fantasy recompute from it. Publishing again for the same round and
 division replaces that result, so corrections are just another publish.
 
-Both commit and push to `main` with the laptop's existing Git credential, and then
-Pages publishes it. If the push fails, the commit is undone and the files are
-restored, so the repository is never left half-published.
+The bridge commits to `main` through the GitHub API and Pages publishes it about a
+minute later. A rejected write commits nothing, so the repository is never left
+half-published.
 
 Options: `--port`, `--password` (or `VRS_DESK_PASSWORD`), `--token-file` (default
 `../github token.txt`, `VRS_DESK_TOKEN_FILE`), `--dry-run` (validate and answer
 without writing or pushing), `DESK_NAME` (name in the audit log, defaults to
 `git config user.name`).
 
-### Start it automatically after a reboot (Windows)
+### Local bridge (only for the host laptop)
 
-A shortcut-style script in the Startup folder launches the bridge at every login:
+`tools/desk_server.py` is the same API on loopback, useful when the laptop is the
+one doing the publishing:
+
+```bash
+cd vrs-site
+python tools/desk_server.py
+# http://127.0.0.1:8787/stewards.html#vrs-FIA
+```
+
+It pushes with the laptop's Git credential, so it needs no token. A Startup script
+keeps it running after a reboot:
 
 ```
 %APPDATA%\Microsoft\Windows\Start Menu\Programs\Startup\vrs-desk-bridge.cmd
 ```
 
-It runs `pythonw tools/desk_server.py --log-file logs/desk-bridge.log` from this
-folder, without a console window. Delete the `.cmd` to stop the autostart. Without
-the bridge the site still works; only publishing is unavailable. If port 8787 is
-already in use, the second copy exits instead of fighting the first one.
+It runs `pythonw tools/desk_server.py --log-file logs/desk-bridge.log` without a
+console window. Important: `127.0.0.1` is the machine that opens the page, so only
+that laptop can use the local bridge — every other steward uses the hosted one.
 
 Endpoints:
 

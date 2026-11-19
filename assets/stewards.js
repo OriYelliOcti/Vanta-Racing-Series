@@ -86,7 +86,11 @@
         out.innerHTML = `<div class="warn">Checking the desk…</div>`;
         try {
           const answer = await call("/unlock", { password });
-          session = { password, owner: answer.owner || "FIA Steward" };
+          session = {
+            password,
+            owner: answer.owner || "FIA Steward",
+            configured: answer.configured !== false,
+          };
           sessionStorage.setItem(STORE, JSON.stringify(session));
           renderDesk();
         } catch (error) {
@@ -572,6 +576,13 @@
 
     function renderDesk() {
       host.innerHTML = `
+        ${
+          session.configured === false
+            ? `<div class="warn" style="margin-bottom:16px"><b>Bridge not writable yet.</b>
+               The hosted desk has no GitHub write token, so publishing is disabled.
+               Unlocking and reading work; add the token secret to switch publishing on.</div>`
+            : ""
+        }
         <div class="spread">
           <div>
             <h1 style="margin-bottom:4px">FIA stewarding</h1>
@@ -629,6 +640,7 @@
       call("/unlock", { password: session.password })
         .then((answer) => {
           session.owner = answer.owner || session.owner;
+          session.configured = answer.configured !== false;
           renderDesk();
         })
         .catch((error) => {

@@ -96,19 +96,26 @@
       const slotFilter = slotSelect.value;
       const state = stateSelect.value;
       const own = slotsFor(team);
-      const rows = own.filter((s) => !slotFilter || s.key === slotFilter).map((slot) => {
+      const rows = [];
+
+      // One line per seat: a slot with capacity 2 is two seats, not one row.
+      for (const slot of own) {
+        if (slotFilter && slot.key !== slotFilter) continue;
         const members = filledOf(team, slot.key);
-        if (state === "open" && members.length) return "";
-        if (state === "filled" && !members.length) return "";
-        const who = members.length
-          ? members.map((m) => VRS.esc(m.name)).join(", ")
-          : "vacant";
-        return `<div class="slot">
-          <div class="code">${VRS.esc(slot.code)}</div>
-          <div class="who ${members.length ? "" : "vacant"}">${who}</div>
-        </div>`;
-      });
-      const body = rows.filter(Boolean).join("");
+        const capacity = Math.max(slot.capacity || 1, members.length);
+        for (let index = 0; index < capacity; index += 1) {
+          const member = members[index];
+          if (state === "open" && member) continue;
+          if (state === "filled" && !member) continue;
+          rows.push(`<div class="slot">
+            <div class="code">${index === 0 ? VRS.esc(slot.code) : ""}</div>
+            <div class="who ${member ? "" : "vacant"}">${
+              member ? VRS.esc(member.name) : "vacant"
+            }</div>
+          </div>`);
+        }
+      }
+      const body = rows.join("");
       if (!body) return "";
       const filled = own.reduce((sum, s) => sum + filledOf(team, s.key).length, 0);
       return `<article class="card team">

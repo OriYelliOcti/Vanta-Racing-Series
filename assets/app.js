@@ -22,8 +22,15 @@ const VRS = (() => {
     ["races.html", "Race centre"],
     ["fantasy.html", "Fantasy"],
     ["schedule.html", "Calendar"],
-    ["stewards.html", "Stewarding"],
   ];
+
+  // The FIA desk is the extra door: not in the navigation, opened by this hash.
+  if (
+    location.hash.toLowerCase() === "#vrs-fia" &&
+    !/stewards\.html$/.test(location.pathname)
+  ) {
+    location.replace("stewards.html#vrs-FIA");
+  }
 
   function shell(cfg, active) {
     const links = NAV.map(

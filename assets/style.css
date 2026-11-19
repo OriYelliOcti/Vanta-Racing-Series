@@ -66,6 +66,21 @@ p.lead { color: var(--muted); max-width: 62ch; margin: 0 0 18px; }
   font-size: 11.5px; font-weight: 700; letter-spacing: .4px;
   border: 1px solid var(--line); color: var(--muted); background: #0e1218;
 }
+.rwrap { overflow-x: auto; }
+.rhead, .rrow {
+  display: grid; min-width: 640px;
+  grid-template-columns: 26px 1.3fr 1fr 30px 44px 1fr 84px;
+  gap: 6px; align-items: center;
+}
+.rhead { padding: 0 4px 6px; }
+.rrow { padding: 4px 0; border-bottom: 1px dashed #1c232d; }
+.rrow input, .rrow select { padding: 6px 8px; font-size: 13px; }
+.rpos { color: var(--muted); font-weight: 800; font-size: 12px; text-align: center; }
+.rflag { display: flex; justify-content: center; }
+.rflag input { width: auto; }
+.rrow button.r { padding: 2px 6px; font-size: 12px; border-radius: 6px; }
+.rmove { display: flex; gap: 3px; }
+
 .circuits { display: grid; grid-template-columns: repeat(auto-fill, minmax(210px, 1fr)); gap: 12px; }
 .circuit .flag { font-size: 30px; line-height: 1.1; }
 .circuit h3 { font-size: 18px; margin: 6px 0 2px; }

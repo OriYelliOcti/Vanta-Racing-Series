@@ -86,8 +86,8 @@ The desk is not in the navigation. It opens from:
 
 <https://oriyelliocti.github.io/Vanta-Racing-Series/#vrs-FIA>
 
-Access password: `VRSFIA+`. The page asks for the password and nothing else —
-no token, no GitHub login.
+Access: the FIA password `VRSFIA+` **or** the league's GitHub token. The page
+asks for that one secret and nothing else — no bridge token, no GitHub login.
 
 Publishing is done by a small bridge on the steward's own laptop:
 
@@ -97,24 +97,52 @@ python tools/desk_server.py
 # http://127.0.0.1:8787/stewards.html#vrs-FIA
 ```
 
-The bridge listens on loopback only, checks the password, appends the decision to
-`data/decisions.json`, commits and pushes to `main` with the laptop's existing Git
-credential, and then Pages publishes it. If the push fails, the commit is undone,
-so the repository is never left half-published.
+The bridge listens on loopback only, checks the secret, and publishes two things:
 
-Options: `--port`, `--password` (or `VRS_DESK_PASSWORD`), `--dry-run` (validate and
-answer without writing or pushing), `DESK_NAME` (name recorded in the audit log,
-defaults to `git config user.name`).
+- **Steward decisions** — appended to `data/decisions.json` plus the audit log.
+- **Race results** — the desk has a result editor: pick the round and division, put
+the drivers in finishing order (fill from the lineup in one click, mark fastest
+lap and pole), press Publish. `data/results.json` is updated and the championship,
+home page and fantasy recompute from it. Publishing again for the same round and
+division replaces that result, so corrections are just another publish.
+
+Both commit and push to `main` with the laptop's existing Git credential, and then
+Pages publishes it. If the push fails, the commit is undone and the files are
+restored, so the repository is never left half-published.
+
+Options: `--port`, `--password` (or `VRS_DESK_PASSWORD`), `--token-file` (default
+`../github token.txt`, `VRS_DESK_TOKEN_FILE`), `--dry-run` (validate and answer
+without writing or pushing), `DESK_NAME` (name in the audit log, defaults to
+`git config user.name`).
+
+### Start it automatically after a reboot (Windows)
+
+A shortcut-style script in the Startup folder launches the bridge at every login:
+
+```
+%APPDATA%\Microsoft\Windows\Start Menu\Programs\Startup\vrs-desk-bridge.cmd
+```
+
+It runs `pythonw tools/desk_server.py --log-file logs/desk-bridge.log` from this
+folder, without a console window. Delete the `.cmd` to stop the autostart. Without
+the bridge the site still works; only publishing is unavailable. If port 8787 is
+already in use, the second copy exits instead of fighting the first one.
 
 Endpoints:
 
 ```
-GET  /health              -> {"ok": true, "owner": "…", "dryRun": false}
+GET  /health              -> {"ok": true, "owner": "…", "dryRun": false,
+                             "acceptsToken": true}
 POST /unlock   {password} -> {"ok": true, "owner": "…"} | 401
 POST /publish  {password, kind: "decision", entry: {round, type, subject, text, clip}}
+POST /publish  {password, kind: "result", entry: {round, division,
+               rows: [{pos, driver, team, fastestLap?, pole?, note?}]}}
                           -> {"ok": true, "commit": "<sha>", "owner": "…",
-                              "decision": {…}, "audit": {…}}
+                              "decision"|"result": {…}, "audit": {…}}
 ```
+
+`password` is the field name for the secret, whether the caller sends the FIA
+password or the token.
 
 CORS is allowed for the Pages origin and for `localhost`/`127.0.0.1`, so the same
 desk works from the published site and from the bridge itself. Without the bridge

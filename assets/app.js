@@ -38,7 +38,10 @@ const VRS = (() => {
         `<a href="${href}" class="${href === active ? "on" : ""}">${label}</a>`
     ).join("");
     const header = `<header class="top"><div class="bar">
-      <div class="brand">VANTA <span>RACING</span> SERIES</div>
+      <a class="brand" href="index.html" aria-label="Vanta Racing Series home">
+        <img src="assets/vanta-logo.png?v=20261120" alt="Vanta Racing Series"
+          width="900" height="184">
+      </a>
       <nav>${links}</nav></div></header>`;
     document.body.insertAdjacentHTML("afterbegin", header);
     const footer = `<footer>${esc(cfg.league || "Vanta Racing Series")} · season ${

@@ -72,7 +72,7 @@
           <div class="row"><button class="primary" id="enter">Unlock desk</button></div>
           <div id="lockState" style="margin-top:12px">${box}</div>
           <p class="small muted" style="margin:12px 0 0">Both the FIA password and the
-          league's GitHub token open the desk.</p>
+          league's GitHub token open the desk. <span style="opacity:.7">build 20261119</span></p>
         </div>`;
       const input = document.getElementById("password");
       input.focus();

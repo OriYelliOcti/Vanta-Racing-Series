@@ -45,6 +45,7 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 DATA = os.path.join(ROOT, "data")
 DECISIONS = os.path.join(DATA, "decisions.json")
 RESULTS = os.path.join(DATA, "results.json")
+NEWS = os.path.join(DATA, "news.json")
 SCHEDULE = os.path.join(DATA, "schedule.json")
 LINEUPS = os.path.join(DATA, "lineups.json")
 CONFIG = os.path.join(DATA, "config.json")
@@ -311,6 +312,74 @@ def publish_decision(entry: dict, who: str, dry_run: bool) -> dict:
     }
 
 
+def problem_news(entry: object) -> str:
+    if not isinstance(entry, dict):
+        return "entry must be an object"
+    title = entry.get("title", "")
+    body = entry.get("body", "")
+    if not isinstance(title, str) or not title.strip():
+        return "the title cannot be empty"
+    if len(title) > 140:
+        return "the title is too long (max 140 characters)"
+    if not isinstance(body, str) or not body.strip():
+        return "the text cannot be empty"
+    if len(body) > 6000:
+        return "the text is too long (max 6000 characters)"
+    return ""
+
+
+def publish_news(entry: dict, who: str, dry_run: bool) -> dict:
+    now = datetime.now(timezone.utc).isoformat(timespec="seconds")
+    item = {
+        "title": str(entry["title"]).strip(),
+        "body": str(entry["body"]).strip(),
+        "by": who,
+        "at": now,
+    }
+    audit = {
+        "at": now,
+        "actor": who,
+        "action": "publish news",
+        "target": item["title"][:80],
+    }
+
+    with LOCK:
+        document = read_json(NEWS) if os.path.exists(NEWS) else {"items": []}
+        document.setdefault("items", []).append(item)
+
+        if dry_run:
+            return {
+                "ok": True,
+                "dryRun": True,
+                "commit": "dry-run",
+                "owner": who,
+                "news": item,
+                "audit": audit,
+            }
+
+        write_json(NEWS, document)
+        decisions = read_json(DECISIONS)
+        decisions.setdefault("audit", []).append(audit)
+        write_json(DECISIONS, decisions)
+        try:
+            sha = commit_and_push(
+                ["data/news.json", "data/decisions.json"],
+                "Publish news: %s" % item["title"][:70],
+            )
+        except Exception:
+            restore(["data/news.json", "data/decisions.json"])
+            raise
+
+    return {
+        "ok": True,
+        "dryRun": False,
+        "commit": sha,
+        "owner": who,
+        "news": item,
+        "audit": audit,
+    }
+
+
 def publish_result(number: int, division: str, rows: list[dict], who: str, dry_run: bool) -> dict:
     now = datetime.now(timezone.utc).isoformat(timespec="seconds")
     rows = clean_rows(rows)
@@ -523,6 +592,13 @@ class Handler(SimpleHTTPRequestHandler):
                 answer = publish_result(
                     number, entry["division"], entry["rows"], owner(), self.dry_run
                 )
+            elif kind == "news":
+                entry = payload.get("entry") or {}
+                why = problem_news(entry)
+                if why:
+                    self.reply(400, {"ok": False, "problem": why})
+                    return
+                answer = publish_news(entry, owner(), self.dry_run)
             else:
                 self.reply(400, {"ok": False, "problem": "unknown kind"})
                 return

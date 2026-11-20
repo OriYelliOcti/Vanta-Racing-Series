@@ -137,7 +137,9 @@
       const filled = own.reduce((sum, s) => sum + filledOf(team, s.key).length, 0);
       return `<article class="card team">
         <div class="head">
-          <div class="name">${VRS.esc(team.name)}</div>
+          <div class="name"><a href="team.html?team=${VRS.esc(
+            team.key
+          )}">${VRS.esc(team.name)}</a></div>
           ${VRS.divisionChip(team.division)}
         </div>
         <div class="small muted">${filled} of ${own.reduce(

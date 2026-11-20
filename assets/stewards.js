@@ -337,6 +337,61 @@
       });
     }
 
+    /* ---------- news pane ---------- */
+
+    function renderNewsPane() {
+      document.getElementById("pane").innerHTML = `
+        <div class="card">
+          <h2 style="margin-top:0">Publish news</h2>
+          <p class="small muted" style="margin-top:0">One announcement per post. It goes
+          to <code>data/news.json</code> and appears on the News page.</p>
+          <label class="field"><span>Title</span>
+            <input id="newsTitle" placeholder="First round: Monza"></label>
+          <label class="field"><span>Text</span>
+            <textarea id="newsBody" placeholder="What happened, what it means, when it starts"></textarea></label>
+          <div class="row">
+            <button class="primary" id="publishNews">Publish</button>
+          </div>
+          <div id="newsState" style="margin-top:12px"></div>
+        </div>`;
+
+      document.getElementById("publishNews").addEventListener("click", async () => {
+        const entry = {
+          title: document.getElementById("newsTitle").value.trim(),
+          body: document.getElementById("newsBody").value.trim(),
+        };
+        if (!entry.title || !entry.body) {
+          state("newsState", "A title and a text are both needed.", "err");
+          return;
+        }
+        state("newsState", "Publishing — committing and pushing…", "warn");
+        try {
+          const answer = await call("/publish", {
+            password: session.password,
+            kind: "news",
+            entry,
+          });
+          state(
+            "newsState",
+            `<b>Published.</b> ${commitNote(answer)}logged as ${VRS.esc(
+              answer.owner || session.owner
+            )}.`,
+            "ok"
+          );
+          document.getElementById("newsTitle").value = "";
+          document.getElementById("newsBody").value = "";
+        } catch (error) {
+          state(
+            "newsState",
+            `<b>Not published.</b> ${VRS.esc(error.message)}<br>
+            <span class="small">The repository is untouched.</span>`,
+            "err"
+          );
+          if (error.status === 401) lockScreen(`<div class="err">Session lost — unlock again.</div>`);
+        }
+      });
+    }
+
     /* ---------- result pane ---------- */
 
     function renderResultPane() {
@@ -609,6 +664,7 @@
         <div class="tabs" id="modeTabs" style="margin-top:16px">
           <button data-mode="decision" class="${mode === "decision" ? "on" : ""}">Steward decision</button>
           <button data-mode="result" class="${mode === "result" ? "on" : ""}">Race result</button>
+          <button data-mode="news" class="${mode === "news" ? "on" : ""}">News</button>
         </div>
         <div id="pane"></div>
 
@@ -635,10 +691,12 @@
           b.classList.toggle("on", b === button)
         );
         if (mode === "decision") renderDecisionPane();
+        else if (mode === "news") renderNewsPane();
         else renderResultPane();
       });
 
       if (mode === "decision") renderDecisionPane();
+      else if (mode === "news") renderNewsPane();
       else renderResultPane();
       renderList();
       renderResults();

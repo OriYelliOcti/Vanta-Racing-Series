@@ -22,6 +22,7 @@ const VRS = (() => {
     ["races.html", "Race centre"],
     ["fantasy.html", "Fantasy"],
     ["schedule.html", "Calendar"],
+    ["news.html", "News"],
   ];
 
   // The FIA desk is the extra door: not in the navigation, opened by this hash.

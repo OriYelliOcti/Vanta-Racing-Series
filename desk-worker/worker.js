@@ -232,6 +232,44 @@ async function publishDecision(env, entry) {
   };
 }
 
+function problemNews(entry) {
+  if (!entry || typeof entry !== "object") return "entry must be an object";
+  const title = String(entry.title ?? "").trim();
+  const body = String(entry.body ?? "").trim();
+  if (!title) return "the title cannot be empty";
+  if (title.length > 140) return "the title is too long (max 140 characters)";
+  if (!body) return "the text cannot be empty";
+  if (body.length > 6000) return "the text is too long (max 6000 characters)";
+  return "";
+}
+
+async function publishNews(env, entry) {
+  const now = new Date().toISOString().replace(/\.\d{3}Z$/, "+00:00");
+  const item = {
+    title: String(entry.title).trim(),
+    body: String(entry.body).trim(),
+    by: owner(env),
+    at: now,
+  };
+  const file = await readJson(env, "data/news.json");
+  file.data.items = file.data.items || [];
+  file.data.items.push(item);
+  const commit = await writeJson(
+    env,
+    "data/news.json",
+    file.data,
+    `Publish news: ${item.title.slice(0, 70)}`,
+    file.sha
+  );
+  return {
+    ok: true,
+    commit: commit.commit.sha,
+    owner: owner(env),
+    news: item,
+    audit: null,
+  };
+}
+
 async function publishResult(env, entry) {
   const number = Number(entry.round);
   const division = String(entry.division || "");
@@ -356,6 +394,11 @@ export default {
       }
       if (payload.kind === "result") {
         return reply(await publishResult(env, entry), 200, origin);
+      }
+      if (payload.kind === "news") {
+        const why = problemNews(entry);
+        if (why) return reply({ ok: false, problem: why }, 400, origin);
+        return reply(await publishNews(env, entry), 200, origin);
       }
       return reply({ ok: false, problem: "unknown kind" }, 400, origin);
     } catch (error) {

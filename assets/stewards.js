@@ -266,6 +266,18 @@
                 <option value="grid">Grid penalty</option>
                 <option value="team-points">Team points deduction</option>
               </select></label>
+            <label class="field"><span>Team (deduction only)</span>
+              <select id="sanctionTeam"><option value="">—</option>${(lineups.teams || [])
+                .filter((t) => t.division !== "FIA")
+                .map(
+                  (t) =>
+                    `<option value="${VRS.esc(t.key)}">${VRS.esc(t.name)} · ${VRS.esc(
+                      t.division
+                    )}</option>`
+                )
+                .join("")}</select></label>
+            <label class="field"><span>Points deducted</span>
+              <input id="sanctionPoints" type="number" min="0" max="200" value="0"></label>
           </div>
           <label class="field"><span>Subject</span>
             <input id="subject" placeholder="Driver, team or incident"></label>
@@ -284,6 +296,8 @@
         round: Number(document.getElementById("round").value || 0),
         type: document.getElementById("type").value,
         sanction: document.getElementById("sanction").value,
+        team: document.getElementById("sanctionTeam").value,
+        points: Number(document.getElementById("sanctionPoints").value || 0),
         subject: document.getElementById("subject").value.trim(),
         text: document.getElementById("text").value.trim(),
         clip: document.getElementById("clip").value.trim(),

@@ -54,6 +54,7 @@ DEFAULT_TOKEN_FILE = os.path.join(os.path.dirname(ROOT), "github token.txt")
 DEFAULT_PORT = 8787
 MAX_BODY = 400_000
 TYPES = {"decision", "penalty", "investigation", "clip"}
+SANCTIONS = {"none", "time", "dsq", "warning", "grid", "team-points"}
 PAGES_ORIGIN = "https://oriyelliocti.github.io"
 BRANCH = "main"
 LOCK = threading.Lock()
@@ -163,6 +164,15 @@ def problem_decision(entry: object) -> str:
     subject = entry.get("subject", "")
     text = entry.get("text", "")
     clip = entry.get("clip", "")
+    sanction = entry.get("sanction") or "none"
+    if sanction not in SANCTIONS:
+        return "sanction must be one of " + ", ".join(sorted(SANCTIONS))
+    if sanction == "team-points":
+        points = entry.get("points")
+        if not isinstance(points, int) or not 1 <= points <= 200:
+            return "a team deduction needs points between 1 and 200"
+        if not str(entry.get("team") or "").strip():
+            return "a team deduction needs the team"
     if not isinstance(subject, str) or len(subject) > 120:
         return "subject must be text of at most 120 characters"
     if not isinstance(text, str) or not text.strip():
@@ -266,9 +276,13 @@ def publish_decision(entry: dict, who: str, dry_run: bool) -> dict:
         "subject": str(entry.get("subject") or "").strip(),
         "text": str(entry["text"]).strip(),
         "clip": str(entry.get("clip") or "").strip(),
+        "sanction": entry.get("sanction") or "none",
         "by": who,
         "publishedAt": now,
     }
+    if decision["sanction"] == "team-points":
+        decision["team"] = str(entry.get("team") or "").strip()
+        decision["points"] = int(entry.get("points") or 0)
     audit = {
         "at": now,
         "actor": who,

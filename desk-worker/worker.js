@@ -18,6 +18,7 @@ const REPO = "OriYelliOcti/Vanta-Racing-Series";
 const BRANCH = "main";
 const PAGES = "https://oriyelliocti.github.io";
 const TYPES = ["decision", "penalty", "investigation", "clip"];
+const SANCTIONS = ["none", "time", "dsq", "warning", "grid", "team-points"];
 
 function allowedOrigin(request) {
   const origin = request.headers.get("Origin") || "";
@@ -129,6 +130,17 @@ function problemDecision(entry) {
   if (clip && !(typeof clip === "string" && /^https?:\/\//.test(clip))) {
     return "clip must be an http(s) URL";
   }
+  const sanction = entry.sanction ?? "none";
+  if (!SANCTIONS.includes(sanction)) {
+    return "sanction must be one of " + SANCTIONS.join(", ");
+  }
+  if (sanction === "team-points") {
+    const points = entry.points;
+    if (!Number.isInteger(points) || points < 1 || points > 200) {
+      return "a team deduction needs points between 1 and 200";
+    }
+    if (!String(entry.team ?? "").trim()) return "a team deduction needs the team";
+  }
   return "";
 }
 
@@ -199,9 +211,14 @@ async function publishDecision(env, entry) {
     subject: String(entry.subject ?? "").trim(),
     text: String(entry.text).trim(),
     clip: String(entry.clip ?? "").trim(),
+    sanction: entry.sanction ?? "none",
     by: owner(env),
     publishedAt: now,
   };
+  if (decision.sanction === "team-points") {
+    decision.team = String(entry.team ?? "").trim();
+    decision.points = Number(entry.points) || 0;
+  }
   const audit = {
     at: now,
     actor: owner(env),

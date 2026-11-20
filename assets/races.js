@@ -5,6 +5,7 @@
     const cfg = await VRS.json("data/config.json");
     const results = await VRS.json("data/results.json");
     const lineups = await VRS.json("data/lineups.json");
+    const decisions = await VRS.json("data/decisions.json").catch(() => ({ decisions: [] }));
     VRS.shell(cfg, "races.html");
 
     const rounds = results.rounds || [];
@@ -124,12 +125,41 @@
         .join("");
     }
 
+    function deductionsFor() {
+      const map = new Map();
+      for (const entry of decisions.decisions || []) {
+        if (entry.sanction !== "team-points" || !entry.team || !entry.points) continue;
+        map.set(entry.team, (map.get(entry.team) || 0) + Number(entry.points));
+      }
+      return map;
+    }
+
+    function applyDeductions(table) {
+      const map = deductionsFor();
+      if (!map.size) return table;
+      const teams = table.teams
+        .map((row) => ({ ...row, points: row.points - (map.get(row.team) || 0) }))
+        .sort((a, b) => b.points - a.points || b.wins - a.wins);
+      return { ...table, teams };
+    }
+
     function renderAll() {
-      const table = VRS.computeStandings(rounds, cfg, division);
+      const table = applyDeductions(VRS.computeStandings(rounds, cfg, division));
       renderSummary(table);
       renderDrivers(table);
       renderTeams(table);
       renderSheets();
+      const notes = [...deductionsFor()]
+        .map(([team, pts]) => `${teamLabel(team)} −${pts}`)
+        .join(" · ");
+      if (notes) {
+        document
+          .getElementById("constructors")
+          .insertAdjacentHTML(
+            "beforeend",
+            `<p class="small muted">Deductions: ${VRS.esc(notes)}</p>`
+          );
+      }
     }
 
     document.getElementById("tabs").addEventListener("click", (event) => {

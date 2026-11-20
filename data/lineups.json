@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-19T17:06:34+00:00",
+  "generatedAt": "2026-11-20T13:41:49+00:00",
   "source": "discord-roles",
   "guildId": "1567277556661616770",
   "teams": [
@@ -154,7 +154,12 @@
         "driver": {
           "roleId": "1567289254374285445",
           "label": "⏱️ Driver",
-          "members": []
+          "members": [
+            {
+              "id": "1523813171490455592",
+              "name": "Guizin"
+            }
+          ]
         },
         "reserve": {
           "roleId": "1567289260611215421",

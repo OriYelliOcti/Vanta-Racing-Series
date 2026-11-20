@@ -59,11 +59,12 @@
       "key": "crew",
       "code": "🛞",
       "label": "Pit crew",
-      "capacity": 3,
+      "capacity": 4,
       "seats": [
         "CREW 1",
         "CREW 2",
-        "CREW 3"
+        "CREW 3",
+        "CREW 4"
       ]
     },
     {

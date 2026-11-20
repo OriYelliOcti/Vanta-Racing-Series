@@ -257,6 +257,15 @@
                 <option value="investigation">Investigation</option>
                 <option value="clip">Clip</option>
               </select></label>
+            <label class="field"><span>Sanction</span>
+              <select id="sanction">
+                <option value="none">None</option>
+                <option value="time">Time penalty</option>
+                <option value="dsq">Disqualified</option>
+                <option value="warning">Warning</option>
+                <option value="grid">Grid penalty</option>
+                <option value="team-points">Team points deduction</option>
+              </select></label>
           </div>
           <label class="field"><span>Subject</span>
             <input id="subject" placeholder="Driver, team or incident"></label>
@@ -274,6 +283,7 @@
       const entryOf = () => ({
         round: Number(document.getElementById("round").value || 0),
         type: document.getElementById("type").value,
+        sanction: document.getElementById("sanction").value,
         subject: document.getElementById("subject").value.trim(),
         text: document.getElementById("text").value.trim(),
         clip: document.getElementById("clip").value.trim(),

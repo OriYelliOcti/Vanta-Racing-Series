@@ -1,5 +1,22 @@
 {
   "_note": "Written by the bridge on the steward laptop. The website never writes this file.",
-  "decisions": [],
-  "audit": []
+  "decisions": [
+    {
+      "round": 1,
+      "type": "penalty",
+      "subject": "x",
+      "text": "y",
+      "clip": "",
+      "by": "OriYelli0cti",
+      "publishedAt": "2026-11-20T14:12:37+00:00"
+    }
+  ],
+  "audit": [
+    {
+      "at": "2026-11-20T14:12:37+00:00",
+      "actor": "OriYelli0cti",
+      "action": "publish penalty",
+      "target": "R1 x"
+    }
+  ]
 }

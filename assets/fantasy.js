@@ -6,6 +6,7 @@
     const results = await VRS.json("data/results.json");
     const lineups = await VRS.json("data/lineups.json");
     const published = await VRS.json("data/fantasy.json");
+    const rosterOrder = (await VRS.json("data/fantasy_roster.json")).order || [];
     const pal = await VRS.palette();
     VRS.shell(cfg, "fantasy.html");
 
@@ -133,21 +134,26 @@
       renderProjection();
     }
 
+    // The code carries the picks, not a hash of them: two base-32 positions in the
+    // append-only roster plus a check character. That is how the bot knows which
+    // drivers an entry is worth without asking the player twice.
+    const ALPHABET = "ABCDEFGHJKLMNPQRSTUVWXYZ23456789";
+
     function code(value) {
-      const raw = value.filter(Boolean).join("|").toLowerCase();
-      let hash = 2166136261;
-      for (let i = 0; i < raw.length; i += 1) {
-        hash ^= raw.charCodeAt(i);
-        hash = Math.imul(hash, 16777619);
-      }
-      const alphabet = "ABCDEFGHJKLMNPQRSTUVWXYZ23456789";
-      let n = Math.abs(hash);
-      let out = "";
-      for (let i = 0; i < 5; i += 1) {
-        out += alphabet[n % alphabet.length];
-        n = Math.floor(n / alphabet.length);
-      }
-      return `VRS-${out}`;
+      const chosen = value.filter(Boolean);
+      if (chosen.length !== PICKS) return null;
+      const positions = chosen.map((name) => rosterOrder.indexOf(name));
+      if (positions.some((index) => index < 0 || index > 1023)) return null;
+      const [a, b] = positions;
+      const chars = [
+        ALPHABET[Math.floor(a / 32)],
+        ALPHABET[a % 32],
+        ALPHABET[Math.floor(b / 32)],
+        ALPHABET[b % 32],
+      ];
+      const sum = chars.reduce((total, char) => total + ALPHABET.indexOf(char), 0);
+      chars.push(ALPHABET[sum % 32]);
+      return `VRS-${chars.join("")}`;
     }
 
     function saved() {
@@ -175,8 +181,15 @@
     }
 
     document.getElementById("lockIn").addEventListener("click", () => {
+      const value = code(picks);
+      if (!value) {
+        document.getElementById("result").innerHTML = `<div class="warn">Those picks are
+        not in the published roster yet, so no code can be made. Try again after the next
+        grid update.</div>`;
+        return;
+      }
       const entry = {
-        code: code(picks),
+        code: value,
         drivers: picks.filter(Boolean),
         lockedAt: new Date().toISOString(),
       };

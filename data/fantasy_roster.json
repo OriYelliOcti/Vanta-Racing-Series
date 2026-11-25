@@ -1,0 +1,11 @@
+{
+  "_note": "Append-only driver order for fantasy codes. Never reorder or remove a name - codes point at positions in this list. The daily sync appends new drivers at the end.",
+  "order": [
+    "El Kebabs…",
+    "Gettingoe",
+    "Guizin",
+    "Mirinda",
+    "RoundChain1092",
+    "drsferra7"
+  ]
+}

@@ -14,7 +14,7 @@
     const STORE = "vrs.fantasy.v1";
     const PICKS = 2;
 
-    let picks = [];
+    let picks = new Array(PICKS).fill("");
 
     const standings = new Map();
     for (const division of divisions) {
@@ -161,7 +161,9 @@
     function showSaved() {
       const entry = saved();
       if (!entry) return;
-      picks = (entry.drivers || []).slice(0, PICKS);
+      picks = new Array(PICKS)
+        .fill("")
+        .map((_, index) => (entry.drivers || [])[index] || "");
       document.getElementById("result").innerHTML = `
         <div class="ok"><b>Locked in.</b> Your code is
         <span class="codebox">${VRS.esc(entry.code)}</span><br>
@@ -184,7 +186,7 @@
 
     document.getElementById("reset").addEventListener("click", () => {
       localStorage.removeItem(STORE);
-      picks = [];
+      picks = new Array(PICKS).fill("");
       document.getElementById("result").innerHTML = "";
       renderBuilder();
       afterChange();
@@ -218,7 +220,6 @@
           .join("")}</tbody></table>`;
     }
 
-    picks = [];
     renderBuilder();
     afterChange();
     showSaved();

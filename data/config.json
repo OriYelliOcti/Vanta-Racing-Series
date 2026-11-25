@@ -3,6 +3,33 @@
   "season": "2026",
   "discordInvite": "https://discord.gg/cQ2YSaeqQG",
   "syncHours": 5,
+  "nextEvent": {
+    "label": "Pre-Season Test",
+    "circuit": "Istanbul Park",
+    "country": "Turkey",
+    "flag": "🇹🇷",
+    "start": "2026-11-28T15:00:00Z",
+    "detail": "F1 only · quali 10 min · race ~15 min"
+  },
+  "format": {
+    "raceDay": "Saturday",
+    "qualiStart": "15:00 UTC",
+    "qualiMinutes": 10,
+    "raceMinutes": 20,
+    "testRaceMinutes": 15
+  },
+  "entryFees": {
+    "F1": 20000000,
+    "F2": 10000000,
+    "boss": 5000000
+  },
+  "prizeMoney": [
+    5000000,
+    4000000,
+    3000000,
+    2000000,
+    1000000
+  ],
   "divisions": [
     "F1",
     "F2"

@@ -4,6 +4,7 @@
   try {
     const cfg = await VRS.json("data/config.json");
     const lineups = await VRS.json("data/lineups.json");
+    const pal = await VRS.palette();
     VRS.shell(cfg, "grid.html");
 
     const SLOTS = cfg.slots || [];
@@ -135,11 +136,13 @@
       const body = rows.join("");
       if (!body) return "";
       const filled = own.reduce((sum, s) => sum + filledOf(team, s.key).length, 0);
-      return `<article class="card team">
+      return `<article class="card team" style="border-top-color:${VRS.colorOf(pal, team.key)}">
         <div class="head">
           <div class="name"><a href="team.html?team=${VRS.esc(
             team.key
-          )}">${VRS.esc(team.name)}</a></div>
+          )}">${VRS.esc(team.name)}</a> <span class="small muted">${VRS.esc(
+            VRS.codeOf(pal, team.key)
+          )}</span></div>
           ${VRS.divisionChip(team.division)}
         </div>
         <div class="small muted">${filled} of ${own.reduce(

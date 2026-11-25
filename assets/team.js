@@ -6,6 +6,7 @@
     const lineups = await VRS.json("data/lineups.json");
     const results = await VRS.json("data/results.json");
     const budget = await VRS.json("data/budget.json").catch(() => null);
+    const pal = await VRS.palette();
     VRS.shell(cfg, "grid.html");
 
     const key = new URLSearchParams(location.search).get("team") || "";
@@ -73,6 +74,7 @@
       .sort((a, b) => b.points - a.points || a.name.localeCompare(b.name));
 
     const budgetRow = (budget && (budget.teams || {})[team.key]) || null;
+    const color = VRS.colorOf(pal, team.key);
     const raced = (results.rounds || [])
       .map((round) => ({
         round: round.round,
@@ -84,16 +86,28 @@
       .filter((round) => round.rows.length);
 
     host.innerHTML = `
-      <p class="small muted"><a href="grid.html">← The grid</a></p>
-      <div class="card">
+      <p class="small muted"><a href="grid.html">← The grid</a> ·
+        <a href="seats.html">Seat board</a></p>
+      <div class="card" style="border-top:4px solid ${color};background:linear-gradient(180deg, ${color}22 0%, var(--panel) 42%, var(--panel-2) 100%)">
         <div class="teamhead">
-          <h1 style="margin:0">${VRS.esc(team.name)}</h1>
+          <h1 style="margin:0">${VRS.esc(team.name)}
+            <span class="small muted" style="font-weight:400;letter-spacing:1px;vertical-align:middle;margin-left:8px">${VRS.esc(
+              VRS.codeOf(pal, team.key)
+            )}</span></h1>
           ${VRS.divisionChip(team.division)}
         </div>
         <p class="small muted" style="margin:8px 0 0">${filled} of ${capacity} seats filled${
-          budgetRow ? ` · ${money(budgetRow.budget)} left · ${money(budgetRow.spent)} spent` : ""
-        }</p>
+          capacity - filled ? ` · <b>${capacity - filled} open</b>` : " · full"
+        }${budgetRow ? ` · ${money(budgetRow.budget)} left · ${money(budgetRow.spent)} spent` : ""}</p>
         <div style="margin-top:12px">${rows.join("")}</div>
+        ${
+          capacity - filled
+            ? `<p class="small" style="margin:12px 0 0"><a class="btn primary" href="${VRS.esc(
+                cfg.discordInvite || "#"
+              )}" target="_blank" rel="noopener">Apply for a seat</a>
+               <span class="muted" style="margin-left:8px">post in #signings</span></p>`
+            : ""
+        }
       </div>
 
       <div class="grid2">

@@ -1,3 +1,36 @@
 {
-  "items": []
+  "items": [
+    {
+      "at": "2026-11-25",
+      "by": "FIA",
+      "title": "Pre-season test confirmed: Istanbul Park, 28 November",
+      "image": "assets/news/preseason.jpg",
+      "imageAlt": "A formula car at speed on a grand prix circuit",
+      "body": "The test is on. Qualifying starts at 15:00 UTC and runs for ten minutes, best lap counts; the race follows at 15:35 UTC and lasts about fifteen minutes.\n\nIt runs regardless of how many drivers are signed, and it is F1 only — F2 stays home for this one. The server goes up about fifteen minutes before qualifying.\n\nPlace: Formula Venturi 26 on Roblox. Register your Roblox username in the Discord before Saturday.\n\nResults are published, but they do not count towards the championship."
+    },
+    {
+      "at": "2026-11-25",
+      "by": "FIA",
+      "title": "Every seat is open, not just the race seats",
+      "body": "All eleven seats per team are being recruited at the same time: team owner, team principal, engineer, two drivers, two reserves and four pit crew.\n\n22 teams exist and 16 of them still have no owner. F1 entry is 20M, F2 is 10M, and a boss seat is worth 5M if you hand it on.\n\nOpen seats are on the seat board, with the names of everyone already signed."
+    },
+    {
+      "at": "2026-11-25",
+      "by": "FIA",
+      "title": "Season 1 calendar published",
+      "body": "Nine rounds: Monza, Jeddah, Sepang, Imola, Macau, Yas Marina, Istanbul Park, Marina Bay and Zandvoort. Further rounds may be added.\n\nRaces run on Saturdays, roughly twenty minutes each, in blocks of two with a free week between. The free week doubles as the transfer window.\n\nDates are published once the grid is there."
+    },
+    {
+      "at": "2026-11-25",
+      "by": "FIA",
+      "title": "The rules now have a page of their own",
+      "body": "Entry fees, prize money, the weekend format, points and the transfer window are written down on the rules page — so nobody has to ask in a chat what a seat costs.\n\nPoints are the F1 standard for the top ten plus one for the fastest lap. Prize money goes to the top five: 5M, 4M, 3M, 2M and 1M.\n\nIf a rule is not on that page, it is not a rule yet."
+    },
+    {
+      "at": "2026-11-25",
+      "by": "FIA",
+      "title": "Recruiting posts are live in #signings",
+      "body": "Six posts went up in #signings: team owner, team principal, engineer, reserve driver, pit crew and FIA staff. Reply there to claim a seat.\n\nTwo drivers per team actually race, but the other nine seats are real work — and a team with no owner is run by the FIA until someone buys it."
+    }
+  ]
 }

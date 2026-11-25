@@ -1,0 +1,27 @@
+{
+  "_note": "Team colours and short codes for the website. Kept apart from lineups.json so the Discord lineup sync never overwrites them.",
+  "teams": {
+    "mclaren":          { "color": "#ff8700", "code": "MCL" },
+    "ferrari":          { "color": "#dc0000", "code": "FER" },
+    "red_bull_racing":  { "color": "#3671c6", "code": "RBR" },
+    "mercedes":         { "color": "#00d2be", "code": "MER" },
+    "aston_martin":     { "color": "#229971", "code": "AMR" },
+    "alpine":           { "color": "#ff87bc", "code": "ALP" },
+    "williams":         { "color": "#64c4ff", "code": "WIL" },
+    "haas":             { "color": "#b6babd", "code": "HAA" },
+    "racing_bulls":     { "color": "#6692ff", "code": "VRB" },
+    "audi":             { "color": "#f50537", "code": "AUD" },
+    "cadillac":         { "color": "#d4af37", "code": "CAD" },
+    "prema":            { "color": "#e8002d", "code": "PRE" },
+    "art_grand_prix":   { "color": "#ff6a00", "code": "ART" },
+    "campos":           { "color": "#f5d000", "code": "CAM" },
+    "dams":             { "color": "#00a0de", "code": "DAM" },
+    "hitech":           { "color": "#00e701", "code": "HIT" },
+    "mp_motorsport":    { "color": "#ff8c00", "code": "MPM" },
+    "trident":          { "color": "#0057b8", "code": "TRI" },
+    "rodin":            { "color": "#ff2d55", "code": "ROD" },
+    "van_amersfoort":   { "color": "#ff9e1b", "code": "VAR" },
+    "aix":              { "color": "#8a5cff", "code": "AIX" },
+    "fia":              { "color": "#7a8698", "code": "FIA" }
+  }
+}

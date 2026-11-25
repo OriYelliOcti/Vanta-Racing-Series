@@ -6,27 +6,30 @@
   <title>Vanta Racing Series</title>
   <meta name="description" content="Vanta Racing Series — Roblox racing league with F1 and F2 divisions, the full grid, race standings, fantasy championship and a steward desk.">
   <link rel="icon" type="image/png" href="assets/favicon.png">
-  <link rel="stylesheet" href="assets/style.css?v=20261125">
+  <link rel="stylesheet" href="assets/style.css?v=20261126b">
 </head>
 <body>
   <main class="wrap"><div id="app"><p class="muted">Loading…</p></div></main>
-  <script src="assets/app.js?v=20261125"></script>
+  <script src="assets/app.js?v=20261126b"></script>
   <script>
     (async () => {
       const host = document.getElementById("app");
       try {
-        const cfg = await VRS.json("data/config.json");
-        const lineups = await VRS.json("data/lineups.json");
-        const results = await VRS.json("data/results.json");
-        const schedule = await VRS.json("data/schedule.json");
-        const decisions = await VRS.json("data/decisions.json");
+        const [cfg, lineups, results, schedule, decisions, news] = await Promise.all([
+          VRS.json("data/config.json"),
+          VRS.json("data/lineups.json"),
+          VRS.json("data/results.json"),
+          VRS.json("data/schedule.json"),
+          VRS.json("data/decisions.json"),
+          VRS.json("data/news.json").catch(() => ({ items: [] })),
+        ]);
+        const pal = await VRS.palette();
         VRS.shell(cfg, "index.html");
 
         const rounds = results.rounds || [];
         const teams = lineups.teams || [];
         const slots = cfg.slots || [];
         const racing = teams.filter((t) => t.division === "F1" || t.division === "F2");
-        // Org slots belong to the FIA team; racing seats belong to racing teams.
         const slotApplies = (slot, team) =>
           slot.teams ? slot.teams.includes(team.key) : team.division !== "FIA";
         const seats = teams.reduce(
@@ -39,11 +42,7 @@
         );
         const filled = teams.reduce(
           (n, team) =>
-            n +
-            Object.values(team.slots || {}).reduce(
-              (m, slot) => m + (slot.members || []).length,
-              0
-            ),
+            n + Object.values(team.slots || {}).reduce((m, slot) => m + (slot.members || []).length, 0),
           0
         );
         const calendar = (schedule.rounds || []).slice().sort((a, b) => a.round - b.round);
@@ -52,9 +51,41 @@
         const latest = (decisions.decisions || []).slice(-3).reverse();
         const f1Teams = racing.filter((t) => t.division === "F1").length;
         const f2Teams = racing.filter((t) => t.division === "F2").length;
+        const items = (news.items || [])
+          .slice()
+          .sort((a, b) => String(b.at || "").localeCompare(String(a.at || "")))
+          .slice(0, 5);
+        const next = VRS.nextEvent(schedule, cfg);
 
         host.innerHTML = `
-          <div class="hero">
+          <h2 style="margin-top:0">Latest</h2>
+          <div class="news">
+            ${
+              items.length
+                ? items
+                    .map(
+                      (item) => `<article class="card newsitem">
+                        ${
+                          item.image
+                            ? `<img src="${VRS.esc(item.image)}" alt="${VRS.esc(
+                                item.imageAlt || ""
+                              )}" loading="lazy" style="width:100%;height:auto;border-radius:12px;margin:0 0 12px;display:block">`
+                            : ""
+                        }
+                        <h3>${VRS.esc(item.title || "Announcement")}</h3>
+                        <p class="meta">${VRS.esc(String(item.at || "").slice(0, 10))}${
+                        item.by ? ` · ${VRS.esc(item.by)}` : ""
+                      }</p>
+                        <p>${VRS.esc(String(item.body || "").split(/\n\s*\n/)[0])}</p>
+                      </article>`
+                    )
+                    .join("") +
+                  `<p class="small muted" style="margin:0"><a href="news.html">Older posts →</a></p>`
+                : `<div class="card muted">Nothing published yet.</div>`
+            }
+          </div>
+
+          <div class="hero" style="margin-top:26px">
             <div>
               <h1>${f1Teams} F1 teams. ${f2Teams} F2 teams. One paddock.</h1>
               <p class="lead">Vanta Racing Series is a Roblox racing league where the
@@ -62,14 +93,15 @@
               every seat is written down. Lineups come straight from Discord roles, and
               stewards publish their decisions through the same desk the league runs on.</p>
               <div class="row">
+                <a class="btn" href="seats.html">Open seats</a>
                 <a class="btn" href="grid.html">See the grid</a>
-                <a class="btn" href="races.html">Race centre</a>
+                <a class="btn" href="rules.html">The rules</a>
                 ${cfg.discordInvite ? `<a class="btn" href="${VRS.esc(cfg.discordInvite)}" target="_blank" rel="noopener">Join the Discord</a>` : ""}
               </div>
             </div>
             <div class="card">
-              <h2 style="margin-top:0">Season ${VRS.esc(cfg.season || "")}</h2>
-              <div class="stats">
+              ${VRS.countdown(next)}
+              <div class="stats" style="margin-top:16px">
                 <div class="stat"><b>${racing.length}</b><span>racing teams</span></div>
                 <div class="stat"><b>${filled}/${seats}</b><span>seats filled</span></div>
                 <div class="stat"><b>${calendar.length}</b><span>rounds scheduled</span></div>
@@ -94,7 +126,9 @@
                      .map(
                        (d, i) => `<tr><td class="pos">${i + 1}</td>
                        <td><b>${VRS.esc(d.driver)}</b></td>
-                       <td class="muted">${VRS.esc(VRS.teamName(lineups, d.team))}</td>
+                       <td class="muted"><span style="display:inline-block;width:8px;height:8px;border-radius:50%;background:${VRS.colorOf(
+                         pal, d.team
+                       )};margin-right:7px"></span>${VRS.esc(VRS.teamName(lineups, d.team))}</td>
                        <td class="num">${d.wins}</td><td class="num">${d.podiums}</td>
                        <td class="num"><b>${d.points}</b></td></tr>`
                      )

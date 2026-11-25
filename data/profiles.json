@@ -1,0 +1,50 @@
+{
+  "_note": "Race number and nationality per Discord id, copied from the bot's profiles.json by the daily sync. Only what the bot already shows in nicknames.",
+  "updated": "2026-11-25",
+  "users": {
+    "1049326340337315904": {
+      "number": "15",
+      "nationality": "Sweden"
+    },
+    "1307001657564987412": {
+      "number": "23",
+      "nationality": "Italy"
+    },
+    "1033809952814420059": {
+      "number": "44",
+      "nationality": "BAHRAIN"
+    },
+    "1373282526579392573": {
+      "number": "39",
+      "nationality": "Czechia"
+    },
+    "1363153265612554543": {
+      "number": "0",
+      "nationality": "Greece"
+    },
+    "1567886399011688541": {
+      "number": "55",
+      "nationality": "india"
+    },
+    "1250855857802051641": {
+      "number": "16",
+      "nationality": "South Africa"
+    },
+    "1523813171490455592": {
+      "number": "29",
+      "nationality": "Brazil"
+    },
+    "1541526912294457472": {
+      "number": "12",
+      "nationality": "German"
+    },
+    "1545095176450482283": {
+      "number": "99",
+      "nationality": "Italy"
+    },
+    "691655899772616705": {
+      "number": "38",
+      "nationality": "Canada"
+    }
+  }
+}

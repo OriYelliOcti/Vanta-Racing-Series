@@ -4,6 +4,9 @@
   try {
     const cfg = await VRS.json("data/config.json");
     const lineups = await VRS.json("data/lineups.json");
+    // Race numbers and nationalities come from the bot's profiles.json, the same data
+    // it puts into Discord nicknames. Missing entries simply show nothing.
+    const profiles = (await VRS.json("data/profiles.json").catch(() => ({}))).users || {};
     const pal = await VRS.palette();
     VRS.shell(cfg, "grid.html");
 
@@ -50,6 +53,15 @@
     const teamSelect = document.getElementById("fTeam");
     const slotSelect = document.getElementById("fSlot");
     const stateSelect = document.getElementById("fState");
+
+    const profileOf = (member) => profiles[String(member && member.id)] || {};
+    const profileLine = (member) => {
+      const row = profileOf(member);
+      const bits = [];
+      if (row.number) bits.push(`#${VRS.esc(row.number)}`);
+      if (row.nationality) bits.push(VRS.esc(row.nationality));
+      return bits.length ? ` <span class="small muted">${bits.join(" · ")}</span>` : "";
+    };
 
     const filledOf = (team, slotKey) => {
       const slot = (team.slots || {})[slotKey] || {};
@@ -114,7 +126,7 @@
             rows.push(`<div class="slot">
               <div class="code">${VRS.esc(slot.code)}</div>
               <div class="seat">${VRS.esc(seatLabel(index))}</div>
-              <div class="who">${VRS.esc(member.name)}</div>
+              <div class="who">${VRS.esc(member.name)}${profileLine(member)}</div>
             </div>`);
           });
         }

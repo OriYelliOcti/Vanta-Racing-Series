@@ -6,6 +6,7 @@
     const lineups = await VRS.json("data/lineups.json");
     const results = await VRS.json("data/results.json");
     const budget = await VRS.json("data/budget.json").catch(() => null);
+    const profiles = (await VRS.json("data/profiles.json").catch(() => ({}))).users || {};
     const pal = await VRS.palette();
     VRS.shell(cfg, "grid.html");
 
@@ -25,6 +26,15 @@
         : ["boss", "principal", "engineer", "driver", "reserve", "crew"].includes(slot.key)
     );
 
+    // Race number and nationality from the bot's profiles.json, same as on the grid.
+    const profileLine = (member) => {
+      const row = profiles[String(member && member.id)] || {};
+      const bits = [];
+      if (row.number) bits.push(`#${VRS.esc(row.number)}`);
+      if (row.nationality) bits.push(VRS.esc(row.nationality));
+      return bits.length ? ` <span class="small muted">${bits.join(" · ")}</span>` : "";
+    };
+
     const seatLabel = (slot, index) =>
       (slot.seats || [])[index] ||
       ((slot.seats || []).length === 1 ? `${slot.seats[0]} ${index + 1}` : `Seat ${index + 1}`);
@@ -41,7 +51,7 @@
         rows.push(`<div class="slot">
           <div class="code">${VRS.esc(slot.code)}</div>
           <div class="seat">${VRS.esc(seatLabel(slot, index))}</div>
-          <div class="who">${VRS.esc(member.name)}</div>
+          <div class="who">${VRS.esc(member.name)}${profileLine(member)}</div>
         </div>`);
       });
       const open = size - members.length;
@@ -62,8 +72,10 @@
       .flatMap((slot) => slot.members || [])
       .map((member) => {
         const scored = standings.drivers.find((row) => row.driver === member.name) || {};
+        const seat = profileLine(member).trim();
         return {
           name: member.name,
+          seat,
           points: scored.points || 0,
           starts: scored.starts || 0,
           wins: scored.wins || 0,
@@ -119,7 +131,7 @@
                  <th class="num">Wins</th><th class="num">Podiums</th><th class="num">Best</th></tr></thead>
                  <tbody>${drivers
                    .map(
-                     (d) => `<tr><td>${VRS.esc(d.name)}</td><td class="num"><b>${d.points}</b></td>
+                     (d) => `<tr><td>${VRS.esc(d.name)}${d.seat ? ` ${d.seat}` : ""}</td><td class="num"><b>${d.points}</b></td>
                        <td class="num">${d.starts}</td><td class="num">${d.wins}</td>
                        <td class="num">${d.podiums}</td><td class="num">${d.best}</td></tr>`
                    )

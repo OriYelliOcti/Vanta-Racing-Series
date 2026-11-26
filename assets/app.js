@@ -75,7 +75,7 @@ const VRS = (() => {
       ([href, label]) =>
         `<a href="${href}" class="${href === active ? "on" : ""}">${label}</a>`
     ).join("");
-    const header = `<header class="top"><div class="bar">
+    const header = `<header class="top"><div class="topbar">
       <a class="brand" href="index.html" aria-label="Vanta Racing Series home">
         <img src="assets/vanta-logo.png?v=20261120" alt="Vanta Racing Series"
           width="900" height="184">

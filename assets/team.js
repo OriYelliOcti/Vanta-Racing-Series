@@ -117,7 +117,7 @@
             ? `<p class="small" style="margin:12px 0 0"><a class="btn primary" href="${VRS.esc(
                 cfg.discordInvite || "#"
               )}" target="_blank" rel="noopener">Apply for a seat</a>
-               <span class="muted" style="margin-left:8px">post in #signings</span></p>`
+               <span class="muted" style="margin-left:8px">ask a team boss or the FIA — a driver cannot sign himself</span></p>`
             : ""
         }
       </div>

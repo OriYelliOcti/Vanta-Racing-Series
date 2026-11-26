@@ -89,9 +89,12 @@
 
         <div class="card">
           <h2>Signing up</h2>
-          <p>Pick a team, pick a seat, post in <code>#signings</code>. Open seats are on the
-          <a href="seats.html">seat board</a> — every team, every seat, and who already
-          holds it.</p>
+          <p>A driver does <b>not</b> sign himself. Tell a <b>team boss</b> or the
+          <b>FIA</b> that you want the seat; they post the signing in
+          <code>#signings</code> and the budget moves. Only the FIA and team bosses can
+          sign.</p>
+          <p>Open seats are on the <a href="seats.html">seat board</a> — every team, every
+          seat, and who already holds it.</p>
         </div>
       </div>`;
   } catch (error) {

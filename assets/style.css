@@ -272,3 +272,10 @@ textarea { min-height: 84px; resize: vertical; }
 .list li:last-child { border-bottom: 0; }
 
 footer { border-top: 1px solid var(--line); color: var(--muted); font-size: 12.5px; padding: 18px; text-align: center; }
+
+.partner { display: flex; align-items: center; justify-content: center; gap: 10px; margin-top: 14px; }
+.partner-mark { height: 34px; width: auto; opacity: .9; }
+.partner-text { display: flex; flex-direction: column; align-items: flex-start; gap: 3px; text-align: left; }
+.partner-label { font-size: 9.5px; letter-spacing: .16em; text-transform: uppercase; color: var(--muted); line-height: 1; }
+.partner-word { height: 20px; width: auto; }
+@media (max-width: 480px) { .partner-mark { height: 28px; } .partner-word { height: 17px; } }

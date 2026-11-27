@@ -86,9 +86,20 @@ const VRS = (() => {
     const toggle = document.getElementById("themeToggle");
     if (toggle) toggle.addEventListener("click", toggleTheme);
     applyTheme(document.documentElement.dataset.theme || "dark");
-    const footer = `<footer>${esc(cfg.league || "Vanta Racing Series")} · season ${
-      esc(cfg.season || "")
-    } · built from Discord roles and race data</footer>`;
+    const footer = `<footer>
+      <div>${esc(cfg.league || "Vanta Racing Series")} · season ${esc(
+      cfg.season || ""
+    )} · built from Discord roles and race data</div>
+      <div class="partner">
+        <img class="partner-mark" src="assets/partner-tarigys-shield.png?v=20261127a"
+          alt="" width="180" height="111">
+        <span class="partner-text">
+          <span class="partner-label">Official partner</span>
+          <img class="partner-word" src="assets/partner-tarigys-wordmark.png?v=20261127a"
+            alt="Tarigy's Motorsport" width="360" height="51">
+        </span>
+      </div>
+    </footer>`;
     document.body.insertAdjacentHTML("beforeend", footer);
   }
 

@@ -91,12 +91,15 @@ const VRS = (() => {
       cfg.season || ""
     )} · built from Discord roles and race data</div>
       <div class="partner">
-        <img class="partner-mark" src="assets/partner-tarigys-shield.png?v=20261127a"
+        <img class="partner-mark" src="assets/partner-tarigys-shield.png?v=20261127b"
           alt="" width="180" height="111">
         <span class="partner-text">
           <span class="partner-label">Official partner</span>
-          <img class="partner-word" src="assets/partner-tarigys-wordmark.png?v=20261127a"
+          <img class="partner-word" src="assets/partner-tarigys-wordmark.png?v=20261127b"
             alt="Tarigy's Motorsport" width="360" height="51">
+          <img class="partner-word partner-word-ink"
+            src="assets/partner-tarigys-wordmark-ink.png?v=20261127b"
+            alt="" aria-hidden="true" width="360" height="51">
         </span>
       </div>
     </footer>`;
